@@ -1,0 +1,15 @@
+{
+	"apiVersion": 2,
+	"name": "rata/fullwidth-video",
+	"title": "Full Width Video",
+	"category": "rata",
+	"icon": "format-video",
+	"description": "A full-width autoplay video block without controls.",
+	"attributes": {
+		"videoUrl": {
+		"type": "string"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css"
+}

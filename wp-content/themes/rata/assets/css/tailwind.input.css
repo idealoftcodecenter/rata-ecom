@@ -1,0 +1,281 @@
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+	:root {
+        --color-golden-yellow: 244, 193, 0;     /* #F4C100 */
+        --color-cream-white: 246, 242, 233;     /* #F6F2E9 */
+        --color-pure-white: 255, 255, 255;      /* #FFFFFF */
+        --color-vivid-pink: 242, 0, 121;        /* #F20079 */
+        --color-soft-ivory: 255, 251, 240;      /* #FFFBF0 */
+        --color-warm-beige: 239, 227, 199;      /* #EFE3C7 */
+        --color-charcoal-black: 36, 36, 36;     /* #242424 */
+        --color-gray-medium: 138, 138, 138;     /* #8A8A8A */
+    }
+    html {
+        font-family: 'Proxima Nova', sans-serif;
+        font-size: 16px;
+    }
+
+    body {
+        @apply font-body text-base text-charcoal-black;
+    }
+
+    h1 {
+        @apply font-heading text-3xl sm:text-4xl leading-tight;
+    }
+
+    h2 {
+        @apply font-heading text-2xl sm:text-3xl leading-snug;
+    }
+
+    h3 {
+        @apply font-heading text-xl sm:text-2xl leading-snug;
+    }
+
+    h4 {
+        @apply font-heading text-lg sm:text-xl;
+    }
+
+    h5 {
+        @apply font-heading text-lg;
+    }
+
+    h6 {
+        @apply font-heading text-base;
+    }
+
+    p {
+        @apply font-body text-[14px] sm:text-base leading-relaxed;
+    }
+
+    a {
+        @apply text-blue-600 hover:underline;
+    }
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	appearance: none;
+	height: 8px;
+	width: 8px;
+	border-radius: 9999px;
+	background: #f20079;
+}
+
+
+a:hover {
+	text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+	@apply text-charcoal-black;
+	letter-spacing: 0.02em;
+}
+
+.text-10xl {
+	font-size: 42px;
+}
+@media (min-width: 678px) {
+	.text-10xl {
+		font-size: 72px;
+	}
+}
+@media (min-width: 1024px) {
+	.text-10xl {
+		font-size: 90px;
+	}
+}
+
+
+/* =========== Logo settings =========== */
+.custom-logo-link {
+	display: block !important;
+}
+.custom-logo-link img {
+	display: inline-block !important;
+	height: 42px !important;
+	width: auto !important;
+}
+
+
+/* =========== Nav menu links =========== */
+.nav-menu li a {
+	display: block;
+	color: rgb(var(--color-charcoal-black));
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-size: 18px;
+	transition: all 0.2s ease-in-out;
+}
+.nav-menu li a:hover {
+	color: rgb(var(--color-vivid-pink));
+	text-decoration: none;
+}
+.nav-menu li {
+	position: relative;
+}
+.nav-menu li.current-menu-item a {
+	color: rgb(var(--color-vivid-pink));
+}
+.nav-menu li.current-menu-item::after {
+	content: '';
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	width: 14px;
+	height: 14px;
+	background: url('../img/cont/nav-flower.svg') no-repeat center center;
+	background-size: contain;
+}
+
+/* =========== Footer menu =========== */
+.footer-menu li a {
+	display: block;
+	color: rgb(var(--color-charcoal-black));
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 12px;
+	transition: all 0.2s ease-in-out;
+	padding-right: 16px;
+	padding-left: 16px;
+}
+.footer-menu li:last-child a {
+	padding-right: 0;
+}
+.footer-menu li:first-child a {
+	padding-left: 0;
+}
+.footer-menu li {
+	position: relative;
+}
+.footer-menu li::after {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 8px;
+	right: -4px;
+	width: 8px;
+	height: 8px;
+	background: url('../img/cont/nav-flower.svg') no-repeat center center;
+	background-size: contain;
+}
+.footer-menu li:last-child::after {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.footer-menu li a {
+		font-size: 16px;
+		padding-right: 20px;
+		padding-left: 20px;
+	}
+}
+
+
+/* =========== Plicy menu =========== */
+.policy-menu li a {
+	display: inline-block;
+	color: rgb(var(--color-charcoal-black));
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.policy-menu li a:hover {
+	text-decoration: underline;
+}
+
+
+/* =========== Woocommerce bread-crumb menu =========== */
+.woocommerce-breadcrumb a {
+	color: rgb(var(--color-vivid-pink)) !important;
+	text-decoration: none;
+}
+
+
+/* =========== Link arrow settings =========== */
+.arrow {
+	display: inline-block;
+	height: 100%;
+	translate: 0 -10%;
+	margin-left: 8px;
+}
+.arrow .line {
+	display: inline-block;
+	height: 1px;
+	width: 20px;
+	background-color: rgb(var(--color-vivid-pink));
+	transition: all 0.2s ease-in-out;
+	position: relative;
+}
+.arrow .line::after {
+	content: '';
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	right: 1px;
+	top: -4.5px;
+	border-top: 1px solid rgb(var(--color-vivid-pink));
+	border-right: 1px solid rgb(var(--color-vivid-pink));
+	transform: rotate(45deg);
+	transition: all 0.2s ease-in-out;
+}
+a:hover .arrow .line,
+button:hover .arrow .line {
+	width: 32px;
+}
+.arrow.arrow-width-4 .line {
+	height: 4px;
+	width: 40px;
+}
+.arrow.arrow-width-4 .line::after {
+	width: 16px;
+	height: 16px;
+	border-top-width: 4px;
+	border-right-width: 4px;
+	top: -6px;
+}
+.arrow.arrow-white .line {
+	background-color: rgb(var(--color-pure-white));
+}
+.arrow.arrow-white .line::after {
+	border-color: rgb(var(--color-pure-white));
+}
+
+
+/* =========== Link arrow settings =========== */
+.product-thumbnail {
+	box-shadow: 0 4px 12px rgba(228, 228, 228, 0.2);
+}
+
+/* =========== Link arrow settings =========== */
+.social-links-footer path {
+	fill: rgb(var(--color-charcoal-black));
+	transition: all 0.2s ease-in-out;
+}
+.social-links-footer:hover path {
+	fill: rgb(var(--color-vivid-pink));
+}
+
+
+#our-stories-slider .swiper-slide {
+	width: 80%;
+	max-width: 400px;
+}
+
+.swiper-button-disabled {
+	opacity: 0.5;
+}
+
+
+/* =========== Contact form drop shadow =========== */
+.contat-form-box {
+	-webkit-box-shadow: 0 3px 60px rgba(194,194,194,.16);
+	-moz-box-shadow: 0 3px 60px rgba(194,194,194,.16);
+	box-shadow: 0 3px 60px rgba(194,194,194,.16);
+}
