@@ -229,6 +229,13 @@ a:hover .arrow .line,
 button:hover .arrow .line {
 	width: 32px;
 }
+.arrow.short .line {
+	width: 12px;
+}
+a:hover .arrow.short .line,
+button:hover .arrow.short .line {
+	width: 16px;
+}
 .arrow.arrow-width-4 .line {
 	height: 4px;
 	width: 40px;
@@ -239,6 +246,14 @@ button:hover .arrow .line {
 	border-top-width: 4px;
 	border-right-width: 4px;
 	top: -6px;
+}
+.arrow.arrow-width-2 .line {
+	height: 2px;
+}
+.arrow.arrow-width-2 .line::after {
+	border-top-width: 2px;
+	border-right-width: 2px;
+	top: -4px;
 }
 .arrow.arrow-white .line {
 	background-color: rgb(var(--color-pure-white));
@@ -268,6 +283,11 @@ button:hover .arrow .line {
 	max-width: 400px;
 }
 
+#team-slider .swiper-slide {
+	width: 80%;
+	max-width: 360px;
+}
+
 .swiper-button-disabled {
 	opacity: 0.5;
 }
@@ -278,4 +298,17 @@ button:hover .arrow .line {
 	-webkit-box-shadow: 0 3px 60px rgba(194,194,194,.16);
 	-moz-box-shadow: 0 3px 60px rgba(194,194,194,.16);
 	box-shadow: 0 3px 60px rgba(194,194,194,.16);
+}
+
+/* =========== PRODUCT SINGLE PAGE SWIPER =========== */
+.product-thumbnail-swiper .swiper-slide {
+	height: auto;
+	cursor: pointer;
+}
+.product-thumbnail-swiper img {
+	border: 2px solid transparent;
+	transition: border 0.3s;
+}
+.product-thumbnail-swiper img:hover {
+	border-color: #facc15; /* Tailwind yellow-400 */
 }

@@ -11,11 +11,31 @@ get_header(); ?>
 	<h1 class="mt-8">Contact <span class="font-bold">US</span></h1>
 	<article class="flex mt-4 lg:pr-24">
 		<section class="w-1/2 bg-[#FFFBF0] px-8 py-6 border border-golden-yellow mt-12 contat-form-box">
-			<?php echo do_shortcode('[contact-form-7 id="550ecf9" title="Contact Form"]'); ?>
-			<button type="submit" class="bg-yellow-400 text-black font-semibold px-6 py-3 shadow transition flex items-center justify-center gap-2" >
-				Share Details
-				<span class="arrow"><div class="line"></div></span>
-			</button>
+			<?php // echo do_shortcode('[contact-form-7 id="550ecf9" title="Contact Form"]'); ?>
+			<div class="mb-6">
+				<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Name</label>
+				<input type="text" name="name" placeholder="Add your name here" class="w-full px-4 pb-2 pt-1 border border-transparent bg-white focus:outline-none focus:border-yellow-400" />
+			</div>
+
+			<!-- Contact -->
+			<div class="mb-6">
+				<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Mobile Number/Email ID</label>
+				<input type="text" name="contact" placeholder="Add your contact details" class="w-full px-4 pb-2 pt-1 border border-transparent bg-white focus:outline-none focus:border-yellow-400" />
+			</div>
+
+			<!-- Reference -->
+			<div class="mb-6">
+				<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Mobile Number/Email ID</label>
+				<textarea type="text" name="contact" placeholder="Add your contact details" class="w-full px-4 pb-2 pt-1 border border-transparent bg-white focus:outline-none focus:border-yellow-400"></textarea>
+			</div>
+
+			<!-- Submit Button -->
+			<div class="w-full flex">
+				<button type="submit" class="bg-yellow-400 text-black font-semibold px-6 py-3 shadow transition flex items-center justify-center gap-2" >
+					Share Details
+					<span class="arrow"><div class="line"></div></span>
+				</button>
+			</div>
 		</section>
 		<section class="w-1/2 lg:px-24 mt-12">
 			<h1 class="mb-6">Our Head Office</h2>

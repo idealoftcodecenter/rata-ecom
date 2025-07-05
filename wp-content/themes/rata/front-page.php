@@ -1,906 +1,678 @@
-<?php 
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:title" content="Rata | " />
+    <meta property="og:url" content="https://rata.in/index.html" />
+    <meta property="og:description" content="Rata | Make Everyday Bead-e-ful! 🌸✨" />
+    <meta property="og:image" content="" />
+    <meta property="og:type" content="article" />
 
-$category = get_term_by( 'slug', 'the-mesh-garden', 'product_cat' );
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-/**
- * Template Part: Fixed Sticky Section for "The Mesh Garden" Products
- */
-$args = [
-    'post_type'      => 'product',
-    'posts_per_page' => -1, // -1 fetches all products
-    'post_status'    => 'publish',
-    'tax_query'      => [
-        [
-            'taxonomy' => 'product_cat',
-            'field'    => 'slug',
-            'terms'    => 'the-mesh-garden', // replace with your category slug
-        ],
-    ],
-];
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.css" />
+    <title>Rata | Make Everyday Bead-e-ful! 🌸✨</title>
+    <script type="module" crossorigin src="<?php echo get_template_directory_uri(); ?>/assets/index-7lUWUbe5.js"></script>
+    <link rel="stylesheet" crossorigin href="<?php echo get_template_directory_uri(); ?>/assets/index-rkK2SzGx.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-95HP5YP2W0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-$query = new WP_Query($args);
+      gtag('config', 'G-95HP5YP2W0');
+    </script>
+  </head>
+  <body>
+    <audio autoplay loop id="forest-audio" allow="autoplay">
+      <source src="<?php echo get_template_directory_uri(); ?>/assets/birds-in-forest-hJxTr20E.mp3" type="audio/mpeg">
+    </audio>
+    <audio autoplay loop id="river-audio">
+      <source src="<?php echo get_template_directory_uri(); ?>/assets/river-in-the-forest-LyC-5RoS.mp3" type="audio/mpeg" />
+    </audio>
+    <audio audoplay loop id="phone-audio" allow="autoplay">
+      <source src="<?php echo get_template_directory_uri(); ?>/assets/phone-ringtone-updated-aXcnuY1K.mp3" type="audio/mpeg" />
+    </audio>
 
-get_header();
-?>
+    <a href="#" class="brand-logo" id="navLogo"><img src="<?php echo get_template_directory_uri(); ?>/assets/rata-logo-alt-I5OBpzdS.svg" alt="" /><span class="text">Rata Logo</span></a>
+    <div class="nav-buttons" id="nav-buttons">
+      <button class="about-us" id="about-us-trigger">
+        <span class="icon">
+          <svg width="22" height="auto" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- <path d="M19.9317 13.9907C19.6438 14.1393 19.3287 14.2517 19.072 14.4449C18.711 14.7165 18.5691 15.1218 18.5816 15.5844C18.615 16.828 18.2123 17.9039 17.3379 18.7782C15.9231 20.1958 13.7299 20.4017 12.096 19.2812C11.4658 18.8504 10.8565 18.827 10.1929 19.2536C8.53187 20.321 6.48686 20.0282 5.18265 18.7973C4.08293 17.7596 3.65515 16.4694 3.87217 14.9605C3.98068 14.2178 3.74488 13.7233 3.08964 13.3817C2.2466 12.9424 1.61848 12.2909 1.20114 11.4293C0.458255 9.89078 0.72953 7.99996 1.87098 6.73942C2.2925 6.27255 2.78498 5.91179 3.36927 5.67412C4.08502 5.38339 4.47107 4.83588 4.51697 4.05069C4.58792 2.82198 5.08039 1.80548 5.9923 1.0012C7.40711 -0.246612 9.58567 -0.337865 11.1006 0.782617C11.614 1.16248 12.2108 1.18582 12.7387 0.850525C13.4461 0.400635 14.2224 0.213888 15.0488 0.252086C16.3029 0.311506 17.3442 0.846282 18.1267 1.83307C18.8383 2.72861 19.1325 3.77694 19.0136 4.92925C18.9447 5.60833 19.168 6.06034 19.7752 6.3532C20.7289 6.81582 21.4321 7.53098 21.8599 8.50928C22.5339 10.0521 22.2439 11.9344 21.0106 13.1822C20.6955 13.5005 20.3115 13.7488 19.961 14.031C19.9547 14.0204 19.9443 14.0056 19.9317 13.9907ZM13.8072 8.9146C13.7216 8.65358 13.4983 8.53899 13.2771 8.41378C12.9265 8.21642 12.576 8.01482 12.2442 7.78987C12.0063 7.62859 11.7705 7.48217 11.4763 7.55644C11.3135 7.59676 11.1424 7.66255 11.0088 7.76441C10.6186 8.05726 10.172 8.21218 9.71714 8.36497C9.41873 8.46471 9.17249 8.70875 9.1558 9.06952C9.13076 9.63188 9.13702 10.1942 9.00347 10.7481C8.91583 11.1131 9.24554 11.5545 9.45421 11.6649C9.84652 11.8686 10.2326 12.0872 10.5977 12.3376C11.0047 12.6156 11.4011 12.6495 11.8185 12.3928C12.2254 12.1424 12.6219 11.8813 13.081 11.7243C13.5985 11.5482 13.8885 11.0388 13.8698 10.4807C13.8593 10.1815 13.8802 9.87805 13.9115 9.58095C13.9386 9.34327 13.9449 9.12257 13.8072 8.9146Z" fill="#F20079"/> -->
+            <path d="M19.9317 13.9907C19.6438 14.1393 19.3287 14.2517 19.072 14.4449C18.711 14.7165 18.5691 15.1218 18.5816 15.5844C18.615 16.828 18.2123 17.9039 17.3379 18.7782C15.9231 20.1958 13.7299 20.4017 12.096 19.2812C11.4658 18.8504 10.8565 18.827 10.1929 19.2536C8.53187 20.321 6.48686 20.0282 5.18265 18.7973C4.08293 17.7596 3.65515 16.4694 3.87217 14.9605C3.98068 14.2178 3.74488 13.7233 3.08964 13.3817C2.2466 12.9424 1.61848 12.2909 1.20114 11.4293C0.458255 9.89078 0.72953 7.99996 1.87098 6.73942C2.2925 6.27255 2.78498 5.91179 3.36927 5.67412C4.08502 5.38339 4.47107 4.83588 4.51697 4.05069C4.58792 2.82198 5.08039 1.80548 5.9923 1.0012C7.40711 -0.246612 9.58567 -0.337865 11.1006 0.782617C11.614 1.16248 12.2108 1.18582 12.7387 0.850525C13.4461 0.400635 14.2224 0.213888 15.0488 0.252086C16.3029 0.311506 17.3442 0.846282 18.1267 1.83307C18.8383 2.72861 19.1325 3.77694 19.0136 4.92925C18.9447 5.60833 19.168 6.06034 19.7752 6.3532C20.7289 6.81582 21.4321 7.53098 21.8599 8.50928C22.5339 10.0521 22.2439 11.9344 21.0106 13.1822C20.6955 13.5005 20.3115 13.7488 19.961 14.031C19.9547 14.0204 19.9443 14.0056 19.9317 13.9907ZM13.8072 8.9146C13.7216 8.65358 13.4983 8.53899 13.2771 8.41378C12.9265 8.21642 12.576 8.01482 12.2442 7.78987C12.0063 7.62859 11.7705 7.48217 11.4763 7.55644C11.3135 7.59676 11.1424 7.66255 11.0088 7.76441C10.6186 8.05726 10.172 8.21218 9.71714 8.36497C9.41873 8.46471 9.17249 8.70875 9.1558 9.06952C9.13076 9.63188 9.13702 10.1942 9.00347 10.7481C8.91583 11.1131 9.24554 11.5545 9.45421 11.6649C9.84652 11.8686 10.2326 12.0872 10.5977 12.3376C11.0047 12.6156 11.4011 12.6495 11.8185 12.3928C12.2254 12.1424 12.6219 11.8813 13.081 11.7243C13.5985 11.5482 13.8885 11.0388 13.8698 10.4807C13.8593 10.1815 13.8802 9.87805 13.9115 9.58095C13.9386 9.34327 13.9449 9.12257 13.8072 8.9146Z" fill="#fff"/>
+          </svg>
+        </span>
+        About us
+      </button>
+      <!-- <button class="view-all-products" id="products-gallery-trigger">
+        <span class="icon">
+          <svg width="23" height="auto" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.4317 13.9907C19.1438 14.1393 18.8287 14.2517 18.572 14.4449C18.211 14.7165 18.0691 15.1218 18.0816 15.5844C18.115 16.828 17.7123 17.9039 16.8379 18.7782C15.4231 20.1958 13.2299 20.4017 11.596 19.2812C10.9658 18.8504 10.3565 18.827 9.69291 19.2536C8.03187 20.321 5.98686 20.0282 4.68265 18.7973C3.58293 17.7596 3.15515 16.4694 3.37217 14.9605C3.48068 14.2178 3.24488 13.7233 2.58964 13.3817C1.7466 12.9424 1.11848 12.2909 0.701136 11.4293C-0.0417445 9.89078 0.22953 7.99996 1.37098 6.73942C1.7925 6.27255 2.28498 5.91179 2.86927 5.67412C3.58502 5.38339 3.97107 4.83588 4.01697 4.05069C4.08792 2.82198 4.58039 1.80548 5.4923 1.0012C6.90711 -0.246612 9.08567 -0.337865 10.6006 0.782617C11.114 1.16248 11.7108 1.18582 12.2387 0.850525C12.9461 0.400635 13.7224 0.213888 14.5488 0.252086C15.8029 0.311506 16.8442 0.846282 17.6267 1.83307C18.3383 2.72861 18.6325 3.77694 18.5136 4.92925C18.4447 5.60833 18.668 6.06034 19.2752 6.3532C20.2289 6.81582 20.9321 7.53098 21.3599 8.50928C22.0339 10.0521 21.7439 11.9344 20.5106 13.1822C20.1955 13.5005 19.8115 13.7488 19.461 14.031C19.4547 14.0204 19.4443 14.0056 19.4317 13.9907ZM13.3072 8.9146C13.2216 8.65358 12.9983 8.53899 12.7771 8.41378C12.4265 8.21642 12.076 8.01482 11.7442 7.78987C11.5063 7.62859 11.2705 7.48217 10.9763 7.55644C10.8135 7.59676 10.6424 7.66255 10.5088 7.76441C10.1186 8.05726 9.67205 8.21218 9.21714 8.36497C8.91873 8.46471 8.67249 8.70875 8.6558 9.06952C8.63076 9.63188 8.63702 10.1942 8.50347 10.7481C8.41583 11.1131 8.74554 11.5545 8.95421 11.6649C9.34652 11.8686 9.73256 12.0872 10.0977 12.3376C10.5047 12.6156 10.9011 12.6495 11.3185 12.3928C11.7254 12.1424 12.1219 11.8813 12.581 11.7243C13.0985 11.5482 13.3885 11.0388 13.3698 10.4807C13.3593 10.1815 13.3802 9.87805 13.4115 9.58095C13.4386 9.34327 13.4449 9.12257 13.3072 8.9146Z" fill="white"/>
+          </svg>
+        </span>
+        View All Products
+      </button> -->
+    </div>
 
-<?php /* Template: front-page.php */ ?>
-<main class="w-full">
-	<!-- =================================================== HERO SECTION =================================================== -->
-	<article class="w-full min-h-screen max-h-screen overflow-hidden home-hero-slider">
-		<!-- Slider main container -->
-		 <div class="content absolute left-0 right-0 bottom-[5vh] z-20">
-			<div class="container mx-auto px-4 md:px-0">
-				<p class="text-golden-yellow flex items-center gap-2 text-[16px] lg:text-[20px]">
-					<span>
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M8.65527 5.00781L8.7666 5.2334L8.99219 5.34473L12.3164 7L8.99219 8.65527L8.7666 8.7666L8.65527 8.99219L7 12.3164L5.34473 8.99219L5.2334 8.7666L5.00781 8.65527L1.68262 7L5.00781 5.34473L5.2334 5.2334L5.34473 5.00781L7 1.68262L8.65527 5.00781Z" stroke="rgb(244, 193, 0)" stroke-width="1.5"/>
-						</svg>
-					</span>
-					New Collection
-				</p>
-				<h1 class="text-white text-10xl leading-[1em]">The <span class="font-bold">Mesh</span></h1>
-				<h1 class="text-white text-10xl leading-[1em] ml-[8vw] font-bold">Garden</h1>
-				<p class="text-white text-[16px] lg:text-[20px] mt-[2vw]">
-					Jewelry that captures nature's balance of strength<br />and fragility, bringing garden-inspired resilience to<br />your everyday.
-				</p>
-				<?php
-					$category = get_term_by( 'slug', 'the-mesh-garden', 'product_cat' );
-					if ( $category && ! is_wp_error( $category ) ) : $category_link = get_term_link( $category );
-				?>
-					<p class="text-white text-[18px] lg:text-[24px] font-bold mt-8">
-						<a href="<?php echo esc_url( $category_link ); ?>" class="text-white">
-							EXPLORE <span class="arrow arrow-width-4 arrow-white translate-y-[-6px]"><span class="line"></span></span>
-						</a>
-					</p>
-				<?php endif; ?>
-			</div>
-		</div>
-		<div class="swiper" id="home-hero-slider">
-			<!-- Additional required wrapper -->
-			<div class="swiper-wrapper">
-				<!-- Slides -->
-				<div class="swiper-slide w-full h-full min-h-screen relative">
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/hero-slider/home-hero-slider-1.webp"; ?>" alt="Rata" class="absolute left-0 top-[50%] translate-y-[-50%] inline-block w-full" />
-				</div>
-				<div class="swiper-slide w-full h-full min-h-screen relative">
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/hero-slider/home-hero-slider-2.webp"; ?>" alt="Rata" class="absolute left-0 top-[50%] translate-y-[-50%] inline-block w-full" />
-				</div>
-				<div class="swiper-slide w-full h-full min-h-screen relative">
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/hero-slider/home-hero-slider-3.webp"; ?>" alt="Rata" class="absolute left-0 top-[50%] translate-y-[-50%] inline-block w-full" />
-				</div>
-			</div>
-			<!-- If we need pagination -->
-			<!-- <div class="swiper-pagination"></div> -->
-	
-			<!-- If we need navigation buttons -->
-			<!-- <div class="swiper-button-prev"></div>
-			<div class="swiper-button-next"></div> -->
-		</div>
-	</article>
+    <!-- ======================================================================= Products swiper =========== -->
+    <div class="products-swiper" id="products-swiper-wrapper">
+      <!-- <button class="close" id="slider-close"><img src="assets/img/icns/close-white.svg" alt="" /></button> -->
+      <div class="swiper" id="products-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/lady-rose-studs-I9tv0YA_.webp" class="product-image" alt="" />
+                  <p class="transformed"><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex align-bottom">
+                    <div class="flex-1 left">
+                      <h1>Lady Rose Studs</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                  <p class="bottom-text">"It's the time you spent on your rose that makes your rose so important."</p>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <div class="content">
+                    <p>
+                      A handwoven beaded flower, artfully crafted with attention to detail. Inspired by the elegance and grace of a rose, each petal is intricately woven using vibrant and shimmering beads, creating a lifelike representation of nature's beauty. Capturing the essence of a blooming rose, this exquisite piece serves as a timeless symbol of love and appreciation, making it a unique and cherished addition to any collection or a thoughtful gift that resonates with the enduring charm of a rose in full bloom.
+                    </p>
+                    <p>
+                      Material and Making - Glass Beads, Other Assorted Beads, and Nylon Thread.
+                    </p>
+                  </div>
+                  <div class="back"><img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.28033%200.21967C0.987437%20-0.0732233%200.512563%20-0.0732233%200.21967%200.21967C-0.0732233%200.512563%20-0.0732233%200.987437%200.21967%201.28033L4.06508%205.12574L0.21967%208.97116C-0.0732233%209.26405%20-0.0732233%209.73892%200.21967%2010.0318C0.512563%2010.3247%200.987437%2010.3247%201.28033%2010.0318L5.12574%206.1864L8.97116%2010.0318C9.26405%2010.3247%209.73892%2010.3247%2010.0318%2010.0318C10.3247%209.73892%2010.3247%209.26405%2010.0318%208.97116L6.1864%205.12574L10.0318%201.28033C10.3247%200.987437%2010.3247%200.512563%2010.0318%200.21967C9.73892%20-0.0732233%209.26405%20-0.0732233%208.97116%200.21967L5.12574%204.06508L1.28033%200.21967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e" alt=""></div>
+                </section>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/pink-gazer-earring-YZl25HHS.webp" class="product-image" alt="" />
+                  <p><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex">
+                    <div class="flex-1 left">
+                      <h1>Pink Gazer Earring</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                  <p class="bottom-text">"Silly! No, a Stargazer Lily!"</p>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <p>
+                    A beaded beauty, intricately crafted with precision, care and delicate seed beads that are meticulously woven together. An interplay of colours and textures, brings the flower to life, making it a stunning representation of the timeless allure of the stargazer lily.
+                  </p>
+                  <p>
+                    Material and Making - Glass Beads, Other Assorted Beads, Nylon Thread, Crystal, and Sequins.
+                  </p>
+                  <div class="back"><img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.28033%200.21967C0.987437%20-0.0732233%200.512563%20-0.0732233%200.21967%200.21967C-0.0732233%200.512563%20-0.0732233%200.987437%200.21967%201.28033L4.06508%205.12574L0.21967%208.97116C-0.0732233%209.26405%20-0.0732233%209.73892%200.21967%2010.0318C0.512563%2010.3247%200.987437%2010.3247%201.28033%2010.0318L5.12574%206.1864L8.97116%2010.0318C9.26405%2010.3247%209.73892%2010.3247%2010.0318%2010.0318C10.3247%209.73892%2010.3247%209.26405%2010.0318%208.97116L6.1864%205.12574L10.0318%201.28033C10.3247%200.987437%2010.3247%200.512563%2010.0318%200.21967C9.73892%20-0.0732233%209.26405%20-0.0732233%208.97116%200.21967L5.12574%204.06508L1.28033%200.21967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e" alt=""></div>
+                </section>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/passion-flower-ring-7ooT3D49.webp" class="product-image" alt="" />
+                  <p><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex">
+                    <div class="flex-1 left">
+                      <h1>Passionflower ring</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                  <p class="bottom-text">“Like a flame in the quiet of the night, The passionflower burns with pure delight. A symbol of ardor, wild and free, It beckons hearts to dream and see.”</p>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <p>
+                    Intricately crafted with precision and care drawing inspiration from the captivating elegance of a passion flower. Delicate tendrils of vibrant beads intertwine to form petals that mirror the flower's unique structure. The rich colour palette reflects the passion flower's natural hues, while precise detailing captures the essence of its exotic beauty. Adorn yourself with this beaded masterpiece, and let the passion flower's charm blossom in every step you take.
+                  </p>
+                  <p>
+                    Material and Making - Glass Beads, Other Assorted Beads, and Nylon Thread.
+                  </p>
+                </section>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/garden-of-joy-RRGyXLD-.webp" class="product-image" alt="" />
+                  <p><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex">
+                    <div class="flex-1 left">
+                      <h1>Garden of Joy</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                  <p class="bottom-text">“Sunshine kisses every leaf, In the garden of joy, there's no grief.”</p>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <p>
+                    Each delicate bead is meticulously threaded and intricately arranged to evoke the kaleidoscope of colours found in a blossoming garden. The exquisite craftsmanship seizes the essence of nature's ephemeral beauty, allowing you to carry a piece of the outdoors with you wherever you go.
+                  </p>
+                  <p>
+                    Material and Making - Glass Beads, Other Assorted beads, Nylon Thread, Metal Wire and Sequins. This particular piece follows a detailed process of making with techniques of wire crocheting and bead weaving where individual small flowers are woven separately and then tucked together to make this garden bloom.
+                  </p>
+                </section>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/lotus-pond-bracelet-RlGq9IpN.webp" class="product-image" alt="" />
+                  <p><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex">
+                    <div class="flex-1 left">
+                      <h1>Lotus Pond Bracelet</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <p>
+                    From the mud of adversity grows the lotus of joy. A dash of subtle hues, mimicking the lotus's natural grace. The meticulous beadwork presents the flower's essence, reflecting its symbolic significance of purity and enlightenment. Each bead is carefully selected and woven together, creating a mesmerising texture that brings the lotus to life.
+                  </p>
+                  <p>
+                    Material and Making - Glass Beads, Other Assorted Beads, and Nylon Thread.
+                  </p>
+                </section>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="flex justify-content-center content">
+              <article class="content-inner">
+                <section class="card top">
+                  <img src="<?php echo get_template_directory_uri(); ?>/assets/tiger-lily-neckpiece-NV8POszf.webp" class="product-image" alt="" />
+                  <p><span class="flower-icon"><img src="data:image/svg+xml,%3csvg%20width='16'%20height='14'%20viewBox='0%200%2016%2014'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M13.766%209.79351C13.5645%209.89749%2013.3439%209.97622%2013.1642%2010.1114C12.9115%2010.3015%2012.8122%2010.5853%2012.821%2010.9091C12.8443%2011.7796%2012.5624%2012.5327%2011.9504%2013.1448C10.96%2014.1371%209.42478%2014.2812%208.28103%2013.4968C7.8399%2013.1953%207.41337%2013.1789%206.94886%2013.4775C5.78612%2014.2247%204.35462%2014.0197%203.44167%2013.1581C2.67187%2012.4317%202.37242%2011.5286%202.52434%2010.4724C2.6003%209.95245%202.43523%209.60634%201.97657%209.36717C1.38644%209.05968%200.946758%208.60363%200.654614%208.00052C0.134597%206.92354%200.32449%205.59998%201.1235%204.7176C1.41857%204.39079%201.7633%204.13826%202.1723%203.97188C2.67333%203.76837%202.94356%203.38511%202.9757%202.83548C3.02537%201.97539%203.37009%201.26384%204.00843%200.700838C4.9988%20-0.172628%206.52379%20-0.236505%207.58427%200.547832C7.94361%200.813734%208.36138%200.830075%208.73094%200.595368C9.22612%200.280444%209.76951%200.149722%2010.348%200.17646C11.2259%200.218054%2011.9548%200.592397%2012.5025%201.28315C13.0006%201.91002%2013.2066%202.64386%2013.1233%203.45047C13.0751%203.92583%2013.2314%204.24224%2013.6565%204.44724C14.324%204.77107%2014.8163%205.27168%2015.1157%205.95649C15.5876%207.03644%2015.3845%208.35407%2014.5212%209.22754C14.3007%209.45036%2014.0319%209.62416%2013.7865%209.82173C13.7821%209.8143%2013.7748%209.80391%2013.766%209.79351ZM9.47883%206.24022C9.41894%206.05751%209.26264%205.97729%209.1078%205.88965C8.8624%205.7515%208.617%205.61037%208.38475%205.45291C8.21823%205.34002%208.05317%205.23752%207.8472%205.28951C7.73327%205.31773%207.61349%205.36378%207.52%205.43509C7.24685%205.64008%206.93425%205.74852%206.61581%205.85548C6.40693%205.9253%206.23457%206.09613%206.22288%206.34866C6.20535%206.74232%206.20974%207.13597%206.11625%207.52368C6.0549%207.77919%206.28569%208.08817%206.43177%208.16541C6.70638%208.30802%206.97661%208.46102%207.23224%208.63631C7.51708%208.83091%207.79462%208.85468%208.08676%208.67494C8.3716%208.49965%208.64914%208.31693%208.97049%208.20701C9.33275%208.08371%209.53579%207.72719%209.52265%207.33651C9.51534%207.12706%209.52995%206.91463%209.55186%206.70666C9.57085%206.54029%209.57523%206.3858%209.47883%206.24022Z'%20fill='%23F20079'/%3e%3c/svg%3e" alt="" /></span>Rata's Bloom</p>
+                  <header class="flex">
+                    <div class="flex-1 left">
+                      <h1>Tiger lily neckpiece</h1>
+                    </div>
+                    <div class="flex-1 right">
+                      <a href="#" target="_blank" class="product-link">₹ 4,999 
+                        <!-- <span class="arrow upright white"></span> -->
+                      </a>
+                    </div>
+                  </header>
+                  <p class="bottom-text">"Tiger lily, oh untamed bloom, In your presence, the world finds room."</p>
+                </section>
+                <button class="card side-trigger">View details</button>
+                <section class="card bottom">
+                  <p>
+                    Immerse yourself in the exquisite beauty of our handwoven beaded flower, a stunning creation inspired by the vivid elegance of the tiger lily. The flower's radiant colours mimic the fiery oranges and deep greens of the tiger lily, while the intricate weaving technique adds a touch of sophistication.
+                  </p>
+                  <p>
+                    Material and Making - Glass Beads, Other assorted beads, Nylon Thread, and Metal wire. Crafted using the techniques of French beading, wire crocheting, and bead weaving, this bold lily emerges as a radiant presence, designed to illuminate any room with a spectrum of vibrant hues.
+                  </p>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+        <!-- If we need pagination -->
+        <!-- <div class="swiper-pagination"></div> -->
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev" id="swiper-button-prev"></div>
+        <div class="swiper-button-next" id="swiper-button-next"></div>
+      </div>
+    </div>
 
-	<!-- =================================================== BEHIND THE SCENES SECTION =================================================== -->
-	<article class="bg-white pb-[10vh]">
-		<div class="container mx-auto px-4 md:px-0">
-			<header class="w-full mt-12 mb-8">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px]">Behind the Scenes</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[6vw]">Discover the</h1>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] font-bold">Story of Rata</h1>
-				</div>
-			</header>
-			<section class="relative aspect-video">
-				<video class="w-full object-cover auto-play-on-scroll" id="behind-the-scenes" muted playsinline preload="auto" data-src="<?php echo get_template_directory_uri() . "/assets/img/cont/process/our-process.mp4"; ?>"></video>
-				<input type="range" id="timeline" min="0" value="0" step="0.1" class="absolute bottom-0 left-0 w-full h-2 appearance-none bg-yellow-400 cursor-pointer accent-pink-500" />
-			</section>
-			<div class="w-full flex items-center justify-between mt-6">
-				<div class="max-w-[600px]">
-					<p class="text-lg lg:text-xl">Rata creates uplifting, heirloom-worthy jewellery crafted with love and imagination to brighten spirits and free minds from worries.</p>
-				</div>
-				<div class="">
-					<a href="" class="text-vivid-pink text-lg lg:text-xl">More About Us <span class="arrow translate-y-[-3px]"><span class="line"></span></span></a>
-				</div>
-			</div>	
-		</div>
-	</article>
+    <!-- ======================================================================= Rotate device =========== -->
+    <div class="rotate-device" id="rotate-device">
+      <div>
+        <div class="icon text-center"><img src="data:image/svg+xml,%3csvg%20width='65'%20height='65'%20viewBox='0%200%2065%2065'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20clip-path='url(%23clip0_979_293)'%3e%3cpath%20d='M60.1345%2019.7745L45.2252%204.86516C42.8439%202.48383%2038.8359%202.6225%2036.2839%205.1745L9.79854%2031.6598L8.5372%2032.9212L5.17454%2036.2838C2.61987%2038.8385%202.4812%2042.8412%204.8652%2045.2252L19.7745%2060.1345C22.1585%2062.5185%2026.1612%2062.3798%2028.7159%2059.8252L32.0785%2056.4625L33.3399%2055.2012L59.8252%2028.7158C62.3772%2026.1638%2062.5159%2022.1558%2060.1345%2019.7745ZM55.8465%2026.4172L27.6812%2054.5825L10.4172%2037.3185L38.5825%209.15316C39.7425%207.99316%2041.5639%207.93183%2042.6465%209.01183L55.9879%2022.3532C57.0679%2023.4358%2057.0065%2025.2572%2055.8465%2026.4172Z'%20fill='white'/%3e%3cpath%20d='M62.2867%2035.1665C62.2814%2035.1665%2062.276%2035.1665%2062.268%2035.1665C61.044%2035.1665%2060.0494%2036.1532%2060.0387%2037.3798C59.9694%2046.0172%2055.0147%2053.5692%2047.8227%2057.3905L45.4707%2054.5132C45.0734%2054.0252%2044.484%2053.7292%2043.8547%2053.6972C43.228%2053.6625%2042.612%2053.9025%2042.1667%2054.3478L35.82%2060.6945C35.18%2061.3345%2034.9907%2062.2972%2035.34%2063.1318C35.6867%2063.9612%2036.5%2064.4998%2037.396%2064.4998H37.4147C52.2307%2064.3825%2064.3827%2052.2305%2064.5%2037.4145C64.508%2036.1825%2063.5187%2035.1772%2062.2867%2035.1665Z'%20fill='white'/%3e%3cpath%20d='M27.604%200.5C27.5987%200.5%2027.5934%200.5%2027.5854%200.5C12.7694%200.617333%200.617382%2012.7693%200.500048%2027.5853C0.492048%2028.8173%201.48138%2029.8227%202.71338%2029.8333H2.73205C3.95605%2029.8333%204.95072%2028.8467%204.96138%2027.62C5.03071%2018.9827%209.98538%2011.4307%2017.1774%207.60933L19.5294%2010.4867C19.9267%2010.9747%2020.516%2011.2707%2021.1454%2011.3027C21.772%2011.3373%2022.388%2011.0973%2022.8334%2010.652L29.18%204.30533C29.82%203.66533%2030.0094%202.70267%2029.66%201.868C29.3134%201.03867%2028.5%200.5%2027.604%200.5Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_979_293'%3e%3crect%20width='64'%20height='64'%20fill='white'%20transform='translate(0.5%200.5)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt=""></div>
+        <p class="text-center">Rotate your device to<br />experience it better</p>
+      </div>
+    </div>
 
+    <!-- ======================================================================= About us =========== -->
+    <div class="popup about flex align-items-center justify-content-center" id="about-us-panel">
+      <article class="content-wrapper">
+        <button class="close bounce"><img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.28033%200.21967C0.987437%20-0.0732233%200.512563%20-0.0732233%200.21967%200.21967C-0.0732233%200.512563%20-0.0732233%200.987437%200.21967%201.28033L4.06508%205.12574L0.21967%208.97116C-0.0732233%209.26405%20-0.0732233%209.73892%200.21967%2010.0318C0.512563%2010.3247%200.987437%2010.3247%201.28033%2010.0318L5.12574%206.1864L8.97116%2010.0318C9.26405%2010.3247%209.73892%2010.3247%2010.0318%2010.0318C10.3247%209.73892%2010.3247%209.26405%2010.0318%208.97116L6.1864%205.12574L10.0318%201.28033C10.3247%200.987437%2010.3247%200.512563%2010.0318%200.21967C9.73892%20-0.0732233%209.26405%20-0.0732233%208.97116%200.21967L5.12574%204.06508L1.28033%200.21967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e" alt="" /></button>
+        <div class="white-pane flex">
+          <aside>
+            <!-- <figure>
+              <img src="assets/img/pratiksha-tandon.png" alt="" />
+            </figure> -->
+            <div class="social-links">
+              <a href="https://www.instagram.com/ratalove.in/" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1136_1094)'%3e%3cpath%20d='M36.006%2026.757C30.9015%2026.757%2026.769%2030.894%2026.769%2035.994C26.769%2041.0985%2030.906%2045.231%2036.006%2045.231C41.1105%2045.231%2045.243%2041.094%2045.243%2035.994C45.243%2030.8895%2041.106%2026.757%2036.006%2026.757ZM36.006%2041.9895C32.6925%2041.9895%2030.0105%2039.306%2030.0105%2035.994C30.0105%2032.682%2032.694%2029.9985%2036.006%2029.9985C39.318%2029.9985%2042.0015%2032.682%2042.0015%2035.994C42.003%2039.306%2039.3195%2041.9895%2036.006%2041.9895Z'%20fill='white'/%3e%3cpath%20d='M43.4219%2018.1139C40.1099%2017.9594%2031.9064%2017.9669%2028.5914%2018.1139C25.6784%2018.2504%2023.1089%2018.9539%2021.0374%2021.0254C17.5754%2024.4874%2018.0179%2029.1524%2018.0179%2035.9939C18.0179%2042.9959%2017.6279%2047.5529%2021.0374%2050.9624C24.5129%2054.4364%2029.2454%2053.9819%2036.0059%2053.9819C42.9419%2053.9819%2045.3359%2053.9864%2047.7884%2053.0369C51.1229%2051.7424%2053.6399%2048.7619%2053.8859%2043.4084C54.0419%2040.0949%2054.0329%2031.8929%2053.8859%2028.5779C53.5889%2022.2584%2050.1974%2018.4259%2043.4219%2018.1139ZM48.6644%2048.6719C46.3949%2050.9414%2043.2464%2050.7389%2035.9624%2050.7389C28.4624%2050.7389%2025.4549%2050.8499%2023.2604%2048.6494C20.7329%2046.1339%2021.1904%2042.0944%2021.1904%2035.9699C21.1904%2027.6824%2020.3399%2021.7139%2028.6574%2021.2879C30.5684%2021.2204%2031.1309%2021.1979%2035.9414%2021.1979L36.0089%2021.2429C44.0024%2021.2429%2050.2739%2020.4059%2050.6504%2028.7219C50.7359%2030.6194%2050.7554%2031.1894%2050.7554%2035.9924C50.7539%2043.4054%2050.8949%2046.4309%2048.6644%2048.6719Z'%20fill='white'/%3e%3cpath%20d='M45.6092%2028.551C46.8013%2028.551%2047.7677%2027.5846%2047.7677%2026.3925C47.7677%2025.2004%2046.8013%2024.234%2045.6092%2024.234C44.4171%2024.234%2043.4507%2025.2004%2043.4507%2026.3925C43.4507%2027.5846%2044.4171%2028.551%2045.6092%2028.551Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1136_1094'%3e%3crect%20width='36'%20height='36'%20fill='white'%20transform='translate(18%2018)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+              <a href="https://www.facebook.com/ratalove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cpath%20d='M41.616%2025.312H44.624V20.224C43.1676%2020.0726%2041.7042%2019.9978%2040.24%2020C35.888%2020%2032.912%2022.656%2032.912%2027.52V31.712H28V37.408H32.912V52H38.8V37.408H43.696L44.432%2031.712H38.8V28.08C38.8%2026.4%2039.248%2025.312%2041.616%2025.312Z'%20fill='white'/%3e%3c/svg%3e" alt="" /></a>
+              <a href="https://linktr.ee/RataLove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1194_4)'%3e%3cpath%20d='M32.6997%2041.5489H37.3281V52H32.6997V41.5489ZM22%2030.8367H29.8756L24.2768%2025.4992L27.3748%2022.3141L32.7123%2027.8009V20H37.3405V27.8009L42.6779%2022.3266L45.7735%2025.4992L40.1773%2030.8242H48.0504V35.2285H40.1323L45.7661%2040.7028L42.6779%2043.8134L35.0264%2036.1244L27.3748%2043.8134L24.2768%2040.7154L29.9128%2035.241H22V30.8367Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1194_4'%3e%3crect%20width='26.0504'%20height='32'%20fill='white'%20transform='translate(22%2020)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+            </div>
+          </aside>
+          <div class="inner-wrapper">
+            <div class="content mCustomScrollbar">
+              <section class="main-content">
+                <section class="mobile flex">
+                  <div class="social-links">
+                    <a href="https://www.instagram.com/ratalove.in/" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1136_1094)'%3e%3cpath%20d='M36.006%2026.757C30.9015%2026.757%2026.769%2030.894%2026.769%2035.994C26.769%2041.0985%2030.906%2045.231%2036.006%2045.231C41.1105%2045.231%2045.243%2041.094%2045.243%2035.994C45.243%2030.8895%2041.106%2026.757%2036.006%2026.757ZM36.006%2041.9895C32.6925%2041.9895%2030.0105%2039.306%2030.0105%2035.994C30.0105%2032.682%2032.694%2029.9985%2036.006%2029.9985C39.318%2029.9985%2042.0015%2032.682%2042.0015%2035.994C42.003%2039.306%2039.3195%2041.9895%2036.006%2041.9895Z'%20fill='white'/%3e%3cpath%20d='M43.4219%2018.1139C40.1099%2017.9594%2031.9064%2017.9669%2028.5914%2018.1139C25.6784%2018.2504%2023.1089%2018.9539%2021.0374%2021.0254C17.5754%2024.4874%2018.0179%2029.1524%2018.0179%2035.9939C18.0179%2042.9959%2017.6279%2047.5529%2021.0374%2050.9624C24.5129%2054.4364%2029.2454%2053.9819%2036.0059%2053.9819C42.9419%2053.9819%2045.3359%2053.9864%2047.7884%2053.0369C51.1229%2051.7424%2053.6399%2048.7619%2053.8859%2043.4084C54.0419%2040.0949%2054.0329%2031.8929%2053.8859%2028.5779C53.5889%2022.2584%2050.1974%2018.4259%2043.4219%2018.1139ZM48.6644%2048.6719C46.3949%2050.9414%2043.2464%2050.7389%2035.9624%2050.7389C28.4624%2050.7389%2025.4549%2050.8499%2023.2604%2048.6494C20.7329%2046.1339%2021.1904%2042.0944%2021.1904%2035.9699C21.1904%2027.6824%2020.3399%2021.7139%2028.6574%2021.2879C30.5684%2021.2204%2031.1309%2021.1979%2035.9414%2021.1979L36.0089%2021.2429C44.0024%2021.2429%2050.2739%2020.4059%2050.6504%2028.7219C50.7359%2030.6194%2050.7554%2031.1894%2050.7554%2035.9924C50.7539%2043.4054%2050.8949%2046.4309%2048.6644%2048.6719Z'%20fill='white'/%3e%3cpath%20d='M45.6092%2028.551C46.8013%2028.551%2047.7677%2027.5846%2047.7677%2026.3925C47.7677%2025.2004%2046.8013%2024.234%2045.6092%2024.234C44.4171%2024.234%2043.4507%2025.2004%2043.4507%2026.3925C43.4507%2027.5846%2044.4171%2028.551%2045.6092%2028.551Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1136_1094'%3e%3crect%20width='36'%20height='36'%20fill='white'%20transform='translate(18%2018)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+                    <a href="https://www.facebook.com/ratalove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cpath%20d='M41.616%2025.312H44.624V20.224C43.1676%2020.0726%2041.7042%2019.9978%2040.24%2020C35.888%2020%2032.912%2022.656%2032.912%2027.52V31.712H28V37.408H32.912V52H38.8V37.408H43.696L44.432%2031.712H38.8V28.08C38.8%2026.4%2039.248%2025.312%2041.616%2025.312Z'%20fill='white'/%3e%3c/svg%3e" alt="" /></a>
+                    <a href="https://linktr.ee/RataLove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1194_4)'%3e%3cpath%20d='M32.6997%2041.5489H37.3281V52H32.6997V41.5489ZM22%2030.8367H29.8756L24.2768%2025.4992L27.3748%2022.3141L32.7123%2027.8009V20H37.3405V27.8009L42.6779%2022.3266L45.7735%2025.4992L40.1773%2030.8242H48.0504V35.2285H40.1323L45.7661%2040.7028L42.6779%2043.8134L35.0264%2036.1244L27.3748%2043.8134L24.2768%2040.7154L29.9128%2035.241H22V30.8367Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1194_4'%3e%3crect%20width='26.0504'%20height='32'%20fill='white'%20transform='translate(22%2020)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+                  </div>
+                </section>
+                <section>
+                  <h1>About Studio Rata</h1>
+                  <p>
+                    Studio Rata, founded in 2023 by Pratiksha Tandon, is a luxury lifestyle brand that celebrates handcrafted artistry with a whimsical touch. We curate exquisite beaded art jewellery and lifestyle accessories, designed for the fashionable and outgoing individual within India's vibrant luxury space.
+                  </p>
+                  <div class="studio-images">
+                    <div><img src="<?php echo get_template_directory_uri(); ?>/assets/rata-studio-1-DGSncUhc.webp" alt="" /></div>
+                    <div><img src="<?php echo get_template_directory_uri(); ?>/assets/rata-studio-2-pcewN_ez.webp" alt=""></div>
+                    <div><img src="<?php echo get_template_directory_uri(); ?>/assets/rata-studio-3-de5cCyGx.webp" alt=""></div>
+                    <div><img src="<?php echo get_template_directory_uri(); ?>/assets/rata-studio-4-6gO0nYt-.webp" alt=""></div>
+                  </div>
+                </section>
+                <section>
+                  <h1>Our Vision</h1>
+                  <p>
+                    At Rata, we believe in transcending the ordinary. We challenge conventional lifestyle products by weaving stories and contemporary expressions into each handcrafted piece. We strive for a community built on love and care – the very foundation of our creativity and the driving force behind every intricate detail and design.
+                  </p>
+                  <svg width="100%" height="auto" viewBox="0 60 554 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="482.617" y="83.9033" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 482.617 83.9033)" fill="#DF2E7A"/>
+                    <rect x="468.612" y="67.806" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 468.612 67.806)" fill="#62ABE5"/>
+                    <rect x="462.421" y="87.3242" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 462.421 87.3242)" fill="#62ABE5"/>
+                    <rect x="474.886" y="103.899" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 474.886 103.899)" fill="#62ABE5"/>
+                    <rect x="495.149" y="100.123" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 495.149 100.123)" fill="#62ABE5"/>
+                    <rect x="502.947" y="79.7717" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 502.947 79.7717)" fill="#62ABE5"/>
+                    <rect x="488.875" y="64.0298" width="20.9315" height="20.9315" rx="10.4657" transform="rotate(-8.96523 488.875 64.0298)" fill="#62ABE5"/>
+                    <path d="M548.288 85.0612C547.102 84.6851 542.816 86.1803 541.553 87.0039C538.598 88.9312 535.406 91.8066 533.315 94.6805C531.341 97.3938 529.595 100.049 527.978 102.977C526.406 105.823 524.312 108.72 522.172 111.15C520.186 113.405 517.906 115.336 515.911 117.581C514.93 118.684 513.535 119.958 512.278 120.741C510.345 121.944 507.534 122.801 505.271 123.463C502.097 124.392 498.741 124.242 495.522 124.75C491.557 125.375 487.407 125.053 483.495 124.348C476.676 123.119 471.833 117.605 469.929 111.004C468.652 106.575 466.028 102.672 465.298 98.0461C464.868 95.319 463.649 91.6773 464.365 88.9422C465.082 86.2015 466.01 83.2949 467.237 80.729C468.124 78.8729 468.89 76.8415 469.473 74.8615C469.66 74.2245 469.977 71.8829 470.427 71.8009C472.625 71.4003 475.074 71.2095 476.943 72.5692C479.117 74.1507 480.227 76.7462 482.259 78.4847C485.084 80.9015 485.932 85.2403 488.735 87.6484C489.902 88.6517 490.597 90.0261 491.692 91.0259C492.434 91.7028 493.435 92.121 494.195 92.7687C495.26 93.6761 496.567 93.5461 497.773 93.9287C499.621 94.5149 501.554 94.5723 503.49 94.6434C505.852 94.7302 508.208 94.3901 510.562 94.2643C512.465 94.1626 514.135 94.3293 516.04 94.0288C517.16 93.852 518.315 93.7368 519.419 93.4777C521.215 93.0563 522.791 91.9936 524.619 91.7054C528.218 91.1375 532.153 91.411 531.415 86.7351C530.873 83.2995 526.874 79.8166 524.196 77.8684C520.483 75.1675 516.373 73.1349 512.175 71.358C508.473 69.7908 503.198 70.3472 499.211 70.0261C494.445 69.6421 489.549 69.0536 484.855 68.0696C482.161 67.5047 479.1 67.476 476.761 65.9515C474.936 64.7618 481.715 68.2929 470.858 63.1464C460 58 446 84.5 430 85.0612C414 85.6223 400.5 85.0612 373.5 85.0612L1.5 85.0612" stroke="#EDC03A" stroke-width="2.41409" stroke-linecap="round"/>
+                  </svg>
+                </section>
+                <section>
+                  <h1>The Art of Beadwork</h1>
+                  <p>
+                    Rata (meaning "pleased," "delighted," or "fondly attached" in Sanskrit) embodies our core values. We meticulously string together beads to create cohesive works of art, reflecting the unity and harmony we infuse into each design. Our specialization lies in crafting unique wearable art pieces using a variety of techniques like hand weaving, crocheting, wire artistry, and 3D embroidery. We intricately interweave beads, threads, and wires to bring forth visually stunning patterns. Our constant exploration of new techniques and fusion of different crafts allows us to create one-of-a-kind pieces that are truly special.
+                  </p>
+                </section>
+                <section class="founders-sect">
+                  <header>
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/author-bg-WXAWzfFF.webp" alt="" />
+                    <figure>
+                      <div class="quote">
+                        <svg width="52" height="39" viewBox="0 0 52 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M32.5 39L47.125 39C49.8132 39 52 36.8132 52 34.125L52 19.5C52 16.8118 49.8132 14.625 47.125 14.625L40.5655 14.625L43.0324 1.93524C43.1252 1.45837 42.9998 0.96564 42.6912 0.591125C42.3825 0.216609 41.9231 -8.80951e-07 41.4375 -9.23403e-07L36.1729 -1.38365e-06C34.7598 -1.50719e-06 33.5037 0.92438 33.076 2.26294L28.3455 13.484C28.3185 13.5483 28.2955 13.6141 28.2772 13.6808C27.844 15.2375 27.625 16.8475 27.625 18.4653L27.625 34.125C27.625 36.8132 29.8118 39 32.5 39ZM4.875 39L19.5 39C22.1882 39 24.375 36.8132 24.375 34.125L24.375 19.5C24.375 16.8118 22.1882 14.625 19.5 14.625L12.9397 14.625L15.4073 1.93524C15.501 1.45837 15.3756 0.965638 15.0662 0.591122C14.7583 0.216607 14.2981 -3.296e-06 13.8125 -3.33846e-06L8.54713 -3.79877e-06C7.13318 -3.92238e-06 5.87794 0.924377 5.45106 2.26374L0.72048 13.484C0.693507 13.5483 0.67129 13.6141 0.652247 13.6808C0.219004 15.2391 1.9365e-06 16.849 1.7952e-06 18.4653L4.26186e-07 34.125C1.91173e-07 36.8132 2.18676 39 4.875 39Z" fill="#F20079"/>
+                        </svg>
+                      </div>
+                      <img src="<?php echo get_template_directory_uri(); ?>/assets/pratiksha-tandon-TNO2B2nk.webp" alt="" />
+                    </figure>
+                  </header>
+                  <blockquote>
+                    <h2 class="name">~ Pratiksha Tandon</h2>
+                    <p class="designation">Founder, RATA studio</p>
+                    <p>I have a small team of beaders including myself whom I have taught over time, the initial period of setting up my space involved teaching the artisans the whole day without any production or sampling for 4-5 months. Now I take pride that my artisans are independent enough that they can experiment with the material without my presence, there is so much for all of us to learn as a team, which is what keeps our thrust for learning more alive.</p>
+                  </blockquote>
+                </section>
+              </section>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div class="bottom-leaves"></div>
+    </div>
 
-	<!-- =================================================== MESH GARDEN COLLECTION SECTION =================================================== -->
-	<article class="bg-white relative">
-		<div class="container sticky top-0 overflow-y-auto h-screen mx-auto px-4 md:px-0">
-			<header class="w-full mt-12 mb-8">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2 text-vivid-pink">
-						<span>
-							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M8.65527 5.00781L8.7666 5.2334L8.99219 5.34473L12.3164 7L8.99219 8.65527L8.7666 8.7666L8.65527 8.99219L7 12.3164L5.34473 8.99219L5.2334 8.7666L5.00781 8.65527L1.68262 7L5.00781 5.34473L5.2334 5.2334L5.34473 5.00781L7 1.68262L8.65527 5.00781Z" stroke="rgb(242, 0, 121)" stroke-width="1.5"/>
-							</svg>
-						</span>
-						<span>New Collection</span>
-					</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[6vw] font-bold">The Mesh Garden</h1>
-					<p class="text-right leading-[1.2em]">Explore the serenity and strength of a garden in your everyday life and<br />remind yourself that true resilience often comes dressed in delicacy.</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px]">Collection</h1>
-				</div>
-			</header>
-			<section class="bg-white z-10 pb-[10vw]">
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-4 mb-[4vw]">
-					<?php
-						if ($query->have_posts()) {
-							while ($query->have_posts()) {
-								$query->the_post();
-								wc_get_template_part('content', 'product'); // loads the WooCommerce product template
-							}
-							wp_reset_postdata();
-						} else {
-							echo '<p>No products found.</p>';
-						}
-					?>
-				</div>
-				
-			</section>
-		</div>
-		<!-- <img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/mesh-garden-bottom.webp"; ?>" class="absolute bottom-0 left-0 inline-block w-full" /> -->
-	</article>
+    <!-- ======================================================================= contact us =========== -->
+    <div class="popup contact flex align-items-center justify-content-center" id="contact-us">
+      <article class="content-wrapper">
+        <button class="close bounce"><img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.28033%200.21967C0.987437%20-0.0732233%200.512563%20-0.0732233%200.21967%200.21967C-0.0732233%200.512563%20-0.0732233%200.987437%200.21967%201.28033L4.06508%205.12574L0.21967%208.97116C-0.0732233%209.26405%20-0.0732233%209.73892%200.21967%2010.0318C0.512563%2010.3247%200.987437%2010.3247%201.28033%2010.0318L5.12574%206.1864L8.97116%2010.0318C9.26405%2010.3247%209.73892%2010.3247%2010.0318%2010.0318C10.3247%209.73892%2010.3247%209.26405%2010.0318%208.97116L6.1864%205.12574L10.0318%201.28033C10.3247%200.987437%2010.3247%200.512563%2010.0318%200.21967C9.73892%20-0.0732233%209.26405%20-0.0732233%208.97116%200.21967L5.12574%204.06508L1.28033%200.21967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e" alt="" /></button>
+        <div class="white-pane">
+          <div class="social-links">
+            <a href="https://www.instagram.com/ratalove.in/" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1136_1094)'%3e%3cpath%20d='M36.006%2026.757C30.9015%2026.757%2026.769%2030.894%2026.769%2035.994C26.769%2041.0985%2030.906%2045.231%2036.006%2045.231C41.1105%2045.231%2045.243%2041.094%2045.243%2035.994C45.243%2030.8895%2041.106%2026.757%2036.006%2026.757ZM36.006%2041.9895C32.6925%2041.9895%2030.0105%2039.306%2030.0105%2035.994C30.0105%2032.682%2032.694%2029.9985%2036.006%2029.9985C39.318%2029.9985%2042.0015%2032.682%2042.0015%2035.994C42.003%2039.306%2039.3195%2041.9895%2036.006%2041.9895Z'%20fill='white'/%3e%3cpath%20d='M43.4219%2018.1139C40.1099%2017.9594%2031.9064%2017.9669%2028.5914%2018.1139C25.6784%2018.2504%2023.1089%2018.9539%2021.0374%2021.0254C17.5754%2024.4874%2018.0179%2029.1524%2018.0179%2035.9939C18.0179%2042.9959%2017.6279%2047.5529%2021.0374%2050.9624C24.5129%2054.4364%2029.2454%2053.9819%2036.0059%2053.9819C42.9419%2053.9819%2045.3359%2053.9864%2047.7884%2053.0369C51.1229%2051.7424%2053.6399%2048.7619%2053.8859%2043.4084C54.0419%2040.0949%2054.0329%2031.8929%2053.8859%2028.5779C53.5889%2022.2584%2050.1974%2018.4259%2043.4219%2018.1139ZM48.6644%2048.6719C46.3949%2050.9414%2043.2464%2050.7389%2035.9624%2050.7389C28.4624%2050.7389%2025.4549%2050.8499%2023.2604%2048.6494C20.7329%2046.1339%2021.1904%2042.0944%2021.1904%2035.9699C21.1904%2027.6824%2020.3399%2021.7139%2028.6574%2021.2879C30.5684%2021.2204%2031.1309%2021.1979%2035.9414%2021.1979L36.0089%2021.2429C44.0024%2021.2429%2050.2739%2020.4059%2050.6504%2028.7219C50.7359%2030.6194%2050.7554%2031.1894%2050.7554%2035.9924C50.7539%2043.4054%2050.8949%2046.4309%2048.6644%2048.6719Z'%20fill='white'/%3e%3cpath%20d='M45.6092%2028.551C46.8013%2028.551%2047.7677%2027.5846%2047.7677%2026.3925C47.7677%2025.2004%2046.8013%2024.234%2045.6092%2024.234C44.4171%2024.234%2043.4507%2025.2004%2043.4507%2026.3925C43.4507%2027.5846%2044.4171%2028.551%2045.6092%2028.551Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1136_1094'%3e%3crect%20width='36'%20height='36'%20fill='white'%20transform='translate(18%2018)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+            <a href="https://www.facebook.com/ratalove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cpath%20d='M41.616%2025.312H44.624V20.224C43.1676%2020.0726%2041.7042%2019.9978%2040.24%2020C35.888%2020%2032.912%2022.656%2032.912%2027.52V31.712H28V37.408H32.912V52H38.8V37.408H43.696L44.432%2031.712H38.8V28.08C38.8%2026.4%2039.248%2025.312%2041.616%2025.312Z'%20fill='white'/%3e%3c/svg%3e" alt="" /></a>
+            <a href="https://linktr.ee/RataLove.in" class="social-link bounce" target="_blank"><img src="data:image/svg+xml,%3csvg%20width='72'%20height='72'%20viewBox='0%200%2072%2072'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='72'%20height='72'%20rx='24'%20transform='matrix(-1%200%200%201%2072%200)'%20fill='%23F20079'/%3e%3cg%20clip-path='url(%23clip0_1194_4)'%3e%3cpath%20d='M32.6997%2041.5489H37.3281V52H32.6997V41.5489ZM22%2030.8367H29.8756L24.2768%2025.4992L27.3748%2022.3141L32.7123%2027.8009V20H37.3405V27.8009L42.6779%2022.3266L45.7735%2025.4992L40.1773%2030.8242H48.0504V35.2285H40.1323L45.7661%2040.7028L42.6779%2043.8134L35.0264%2036.1244L27.3748%2043.8134L24.2768%2040.7154L29.9128%2035.241H22V30.8367Z'%20fill='white'/%3e%3c/g%3e%3cdefs%3e%3cclipPath%20id='clip0_1194_4'%3e%3crect%20width='26.0504'%20height='32'%20fill='white'%20transform='translate(22%2020)'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e" alt="" /></a>
+          </div>
+          <figure>
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/full-telephone-bh3DhGgj.webp" alt="" />
+          </figure>
+          <header class="text-center">
+            <h1>Contact Us</h1>
+            <p class="subtext">We'd love to hear from you! Get in touch with us.</p>
+          </header>
+          <address class="text-center">
+            <h2 style="margin: 0 auto;" class="text-center">
+              <span class="small">Email Us</span>
+              <a href="mailto:hi@ratalove.in">hi@ratalove.in</a>
+            </h2>
+          </address>
+        </div>
+      </article>
+    </div>
 
+    <!-- ======================================================================= contact us form =========== -->
+    <div class="popup contact-form flex align-items-center justify-content-center" id="contact-us-form">
+      <div class="content-wrapper">
+        <button class="close bounce"><img src="data:image/svg+xml,%3csvg%20width='11'%20height='11'%20viewBox='0%200%2011%2011'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M1.28033%200.21967C0.987437%20-0.0732233%200.512563%20-0.0732233%200.21967%200.21967C-0.0732233%200.512563%20-0.0732233%200.987437%200.21967%201.28033L4.06508%205.12574L0.21967%208.97116C-0.0732233%209.26405%20-0.0732233%209.73892%200.21967%2010.0318C0.512563%2010.3247%200.987437%2010.3247%201.28033%2010.0318L5.12574%206.1864L8.97116%2010.0318C9.26405%2010.3247%209.73892%2010.3247%2010.0318%2010.0318C10.3247%209.73892%2010.3247%209.26405%2010.0318%208.97116L6.1864%205.12574L10.0318%201.28033C10.3247%200.987437%2010.3247%200.512563%2010.0318%200.21967C9.73892%20-0.0732233%209.26405%20-0.0732233%208.97116%200.21967L5.12574%204.06508L1.28033%200.21967Z'%20fill='white'/%3e%3c/g%3e%3c/svg%3e" alt="" /></button>
+        <div class="white-pane flex">
+          <div class="inner-wrapper">
+            <div class="content mCustomScrollbar">
+              <section class="main-content">
+                <header>
+                  <h1>Craft Your Unique Expression</h1>
+                  <p class="subtext">Design Your Distinctive Jewellery with Us</p>
+                  <!-- <img src="assets/img/rata-logo-alt.svg" alt="" /> -->
+                </header>
+                <form action="" id="contact-form">
+                  <div class="row2 input-wrapper">
+                    <label for="full-name">Your full name <sup class="mandatory">*</sup></label>
+                    <input type="text" name="full_name" id="full-name" />
+                    <span class="field-alert"></span>
+                  </div>
+                  <div class="row2 flex">
+                    <div class="half input-wrapper">
+                      <label for="contact-number">Contact number <sup class="mandatory">*</sup></label>
+                      <input type="text" name="contact_number" id="contact-number" />
+                      <span class="field-alert"></span>
+                    </div>
+                    <div class="half input-wrapper">
+                      <label for="email-id">Email ID <sup class="mandatory">*</sup></label>
+                      <input type="email" name="email_id" id="email-id" />
+                      <span class="field-alert"></span>
+                    </div>
+                  </div>
+                  <div class="row2 input-wrapper">
+                    <label for="product-name">Product name</label>
+                    <input type="text" name="product_name" id="product-name" />
+                    <span class="field-alert"></span>
+                  </div>
+                  <div class="row2 flex">
+                    <div class="half">
+                      
+                    </div>
+                    <div class="half">
+                      
+                    </div>
+                  </div>
+                  <div class="row2 input-wrapper">
+                    <label for="remarks">Remarks</label>
+                    <textarea type="text" name="remarks" id="remarks"></textarea>
+                    <span class="field-alert"></span>
+                  </div>
+                  <div class="row2 flex">
+                    <div class="half">
+                      <button type="submit">Send Message &nbsp; <span class="arrow white upright"></span></button>
+                    </div>
+                    <div class="half text-right">
+                      <div class="fileupload"></div>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-leaves"></div>
+    </div>
 
-	<!-- =================================================== OUR COLLABS SECTION =================================================== -->
-	<article class="bg-golden-yellow">
-		<div class="container mx-auto px-4 md:px-0 relative">
-			<div class="swiper" id="collabs-slider">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-01.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-1.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">Dasied Ozmillen</h1>
-										<p class="font-bold">23 June 2022</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											We aimed to immerse the wearer in a whimsical world, enveloped by a vibrant garden blooming from their feet. Crafting a space of love and growth, our design invites them to embrace their true selves and explore boundless possibilities.
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+    
+    <div class="page-loader flex active" id="loader-panel">
+      <div class="text-center">
+        <h2 class="text-center title-text">Make everyday bead-e-ful</h2>
+        <button class="enter-website" id="enter-website-btn">Enter</button>
+        <svg class="start" width="100%" viewBox="0 0 1512 303" fill="none" xmlns="http://www.w3.org/2000/svg" id="loader-svg">
+          <path class="thread" id="loader-thread" stroke-dasharray="1800px" stroke-dashoffset="1800px" d="M625.108 3.20605C638.352 10.7901 647.796 18.0439 658.498 28.5053C666.301 36.1322 674.866 42.8661 683.155 49.9518C689.186 55.1075 696.823 58.0259 702.676 63.3078C710.176 70.076 721.103 71.9052 730.415 75.4437C746.637 81.6079 763.805 86.4726 780.628 90.5333C794.696 93.929 813.868 94.9153 826.218 102.605C840.222 111.324 853.767 120.908 865.515 132.656C873.99 141.13 886.32 155.835 886.32 168.422C886.32 185.552 872.41 182.355 859.223 182.355C852.528 182.355 846.296 185.265 839.638 185.759C835.543 186.062 831.351 185.823 827.245 185.823C820.267 185.823 814.394 184.285 807.533 183.575C799.047 182.698 790.432 182.585 782.041 180.943C775.16 179.596 768.282 178.301 762.007 175.164C757.911 173.116 753.166 172.843 749.871 168.999C747.519 166.255 744.179 164.196 741.909 161.358C738.555 157.166 736.848 151.862 733.24 147.617C724.58 137.429 723.995 121.441 715.261 111.209C708.978 103.849 706.473 93.945 699.593 87.0659C693.679 81.1513 684.818 80.4523 676.734 80.6448C675.079 80.6842 672.626 88.8754 671.597 91.047C668.4 97.7964 664.514 104.626 660.296 110.76C654.466 119.24 649.508 129.107 645.399 138.499C641.298 147.872 643.601 161.577 643.601 171.568C643.601 188.516 650.779 203.948 652.848 220.497C655.931 245.167 670.134 267.61 693.814 275.847C707.402 280.573 722.055 284.066 736.579 284.066C748.374 284.066 760.285 286.496 772.152 284.965C780.616 283.873 791.147 282.396 798.736 279.186C803.671 277.098 809.377 273.33 813.504 269.939C821.902 263.041 831.14 257.424 839.51 250.483C848.53 243.003 857.65 233.829 864.873 224.542C872.304 214.988 880.046 206.48 888.631 197.895C897.725 188.801 910.756 180.322 922.406 175.1C927.385 172.868 933.5 170 947.577 171.953H1512" stroke="#EDC03A" stroke-width="5" stroke-linecap="round"/>
+          <rect x="713.486" y="130.78" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint0_radial_1148_3)" />
+          <rect x="663.369" y="39.177" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint1_radial_1148_3)" class="circle circle-1" />
+          <rect x="766.709" y="55.034" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint6_radial_1148_3)" class="circle circle-2" />
+          <rect x="610.365" y="126.068" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint2_radial_1148_3)" class="circle circle-3" />
+          <rect x="637.742" y="222.384" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint3_radial_1148_3)" class="circle circle-4" />
+          <rect x="744.414" y="227.16" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint4_radial_1148_3)" class="circle circle-5" />
+          <rect x="825.616" y="151.414" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint5_radial_1148_3)" class="circle circle-6" />
+          <!-- <rect x="675.45" y="65.3" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint1_radial_1148_3)"/>
+          <rect x="637.6" y="131" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint2_radial_1148_3)"/>
+          <rect x="675.45" y="196.2" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint3_radial_1148_3)"/>
+          <rect x="751.35" y="196.2" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint4_radial_1148_3)"/>
+          <rect x="789" y="131" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint5_radial_1148_3)"/>
+          <rect x="751.35" y="65.3" width="75.7464" height="75.7464" rx="37.8732" fill="url(#paint6_radial_1148_3)"/> -->
+          <!-- <path fill-rule="evenodd" id="needle" clip-rule="evenodd" d="M946.5 166.598V174.57C946.5 176.858 948.416 178.68 950.701 178.565L1075.5 172.276L950.809 162.61C948.485 162.43 946.5 164.267 946.5 166.598ZM957.5 173.276C960.538 173.276 963 172.157 963 170.776C963 169.396 960.538 168.276 957.5 168.276C954.462 168.276 952 169.396 952 170.776C952 172.157 954.462 173.276 957.5 173.276Z" fill="#EDC03A" class="needle" /> -->
+          <defs>
+            <radialGradient id="paint0_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(751.359 168.654) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#DF2E7A" stop-opacity="0" />
+              <stop offset="0.712936" stop-color="#DF2E7A"/>
+            </radialGradient>
+            <radialGradient id="paint0_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(751.359 168.654) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#DF2E7A" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#DF2E7A"/>
+            </radialGradient>
+            <radialGradient id="paint1_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(701.242 77.0502) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint2_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(648.238 163.942) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint3_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(675.615 260.257) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint4_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(782.287 265.033) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint5_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(863.489 189.287) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint6_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(804.582 92.9072) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <!-- <radialGradient id="paint1_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(713.3232 103.1732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint2_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(675.4732 168.8732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint3_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(713.3232 234.0732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint4_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(789.2232 234.0732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint5_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(826.8732 168.8732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient>
+            <radialGradient id="paint6_radial_1148_3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(789.2232 103.1732) rotate(90) scale(37.8732)">
+              <stop offset="0.0406246" stop-color="#62ABE5" stop-opacity="0"/>
+              <stop offset="0.712936" stop-color="#62ABE5"/>
+            </radialGradient> -->
+          </defs>
+        </svg>
+        <h5 class="click-to-enter-text text-center" id="click-to-enter">&nbsp; &nbsp; <div id="odometer">0</div>%</h5>
+      </div>
+    </div>
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-02.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-2.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">Dhee <span class="font-normal text-[0.7em]">(Srilankan Musician)</span></h1>
-										<p class="font-bold">8 August 2024</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											Filmfare Award winning, Sri Lankan - Australian singer Dhee wore our pieces from our Mesh Garden Collection in her music video for  I Wear My Roots Like A Medal.
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+    <!-- =========== SCROLL ICON =========== -->
+    <div class="scroll-icon" id="scroll-icon">
+      <div class="scroll">
+        <span>Scroll</span>
+        <div class="mouse-icon">
+          <div class="mouse-icon_wheel"></div>
+        </div>
+      </div>
+      <div class="swipe">
+        <span>Swipe</span>
+        <div class="x-swipe-indicator">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" enable-background="new 0 0 50 50">
+            <path d="M33 38H21c-.6 0-1-.4-1-1 0-1.5-.7-2.4-1.8-3.8-.6-.7-1.3-1.6-2-2.7-1.9-3-3.6-6.6-4-7.9-.4-1.3-.1-2.2.3-2.7.4-.6 1.2-.9 2.1-.9 1.2 0 2.4 1 3.5 2.3V11c0-1.7 1.3-3 3-3s3 1.3 3 3v4.2c.3-.1.6-.2 1-.2 1.1 0 2 .6 2.5 1.4.4-.3.9-.4 1.4-.4 1.4 0 2.5.9 2.9 2.2.3-.1.7-.2 1.1-.2 1.7 0 3 1.3 3 3v3c0 2.6-.5 4.7-1 6.7s-1 3.9-1 6.3c0 .6-.4 1-1 1zm-11.1-2H32c.1-2.2.6-4 1-5.8.5-2 1-3.9 1-6.2v-3c0-.6-.4-1-1-1s-1 .4-1 1v1c0 .6-.4 1-1 1s-1-.4-1-1v-3c0-.6-.4-1-1-1s-1 .4-1 1v2c0 .6-.4 1-1 1s-1-.4-1-1v-3c0-.6-.4-1-1-1s-1 .4-1 1v2c0 .6-.4 1-1 1s-1-.4-1-1v-9c0-.6-.4-1-1-1s-1 .4-1 1v15c0 .6-.4 1-1 1s-1-.4-1-1v-.8c-.9-2.3-2.8-4.2-3.5-4.2-.2 0-.4 0-.5.1-.1.1-.1.4 0 .9.3 1.1 1.8 4.3 3.8 7.5.6 1 1.2 1.7 1.8 2.5 1.1 1.2 2.1 2.3 2.3 4z" fill="#fff" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <!-- =========== Parallax setup starts here =========== -->
+    <!-- <div class="outer" id="outer"> -->
+      <div class="slider" id="slider">
+        <canvas class="canvas-1" id="canvas-1"></canvas>
+        <div class="canvas-overlay" id="canvas-overlay"></div>
+        <div class="canvas-overlay-2" id="canvas-overlay-2"></div>
+        <div class="product-links-wrapper" id="product-links-wrapper">
+          <div class="product-link-wrapper p1" id="gp-link-1" data-id="1">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="1"></a>
+          </div>
+          <div class="product-link-wrapper p2" id="gp-link-2" data-id="2">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="2"></a>
+          </div>
+          <div class="product-link-wrapper p3" id="gp-link-3" data-id="3">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="3"></a>
+          </div>
+          <div class="product-link-wrapper p4" id="gp-link-4" data-id="4">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="4"></a>
+          </div>
+          <div class="product-link-wrapper p5" id="gp-link-5" data-id="5">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="5"></a>
+          </div>
+          <div class="product-link-wrapper p6" id="gp-link-6" data-id="6">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="6"></a>
+          </div>
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-03.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-3.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">OShoJain <span class="font-normal text-[0.7em]">(Music Concert)</span></h1>
-										<p class="font-bold">3 March 2024</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											The collaboration with the immensely talented singer-songwriter Osho Jain came to life at his recent concert in Bengaluru, where Rata brought a touch of elegance and artistry to the evening, harmonizing with soulful music.
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+          <div class="product-panel pp1">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/garden-of-joy-UlyxmYyT.webp" alt="" /></div>
+              <h1>Garden of Joy</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <div class="product-panel pp2">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/lady-rose-studs-red-br9dnUn4.webp" alt="" /></div>
+              <h1>Lady Rose Studs</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <div class="product-panel pp3">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/tiger-lily-neck-piece-SDBcXFMm.webp" alt="" /></div>
+              <h1>Tiger Lily Neck Piece</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <div class="product-panel pp4">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/pink-gazer-C-6f_z4p.webp" alt="" /></div>
+              <h1>Pink Gazer</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <div class="product-panel pp5">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/passion-flower-cqhb-2n7.webp" alt="" /></div>
+              <h1>Passion Flower ring</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <div class="product-panel pp6">
+            <!-- <div class="flex"> -->
+              <div class="img-wrapper"><img src="<?php echo get_template_directory_uri(); ?>/assets/lotus-pond-bracelet-eRz8S1Ym.webp" alt="" /></div>
+              <h1>Lotus Pond Bracelet</h1>
+              <!-- <a href="#" class="link">₹ 4,999 <span class="arrow white upright"></span></a> -->
+            <!-- </div> -->
+          </div>
+          <!-- <div class="product-link-wrapper p7">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene" data-id="6"><span class="arrow upright pink"></span></a>
+          </div> -->
+          <!-- <div class="letter-box" id="letter-box">
+            <img src="assets/img/bg/bird-nest-2.png" alt="" />
+          </div> -->
+        </div>
+        <div class="telephone-base" id="telephone-base">
+          <div class="product-link-wrapper phone-ping" id="phone-ping">
+            <div class="ring ping"></div>
+            <div class="ring small-ping"></div>
+            <a href="#" class="product-link-scene"></a>
+          </div>
+          <div class="receiver">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/receiver-2Saa8Nwf.webp" alt="" />
+          </div>
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/telephone-Z1Z06N-4.webp" alt="" />
+        </div>
+      </div>
+    <!-- </div> -->
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-04.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-4.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">Dasied Ozmillen</h1>
-										<p class="font-bold">23 June 2022</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											We aimed to immerse the wearer in a whimsical world, enveloped by a vibrant garden blooming from their feet. Crafting a space of love and growth, our design invites them to embrace their true selves and explore boundless possibilities.
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+    <div class="loader-cover" style="position: fixed; width: 100%; left: 0; top: 0; right: 0; bottom: 0; z-index: 1000; background-color: #6E8958;"></div>
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-05.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-5.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">Dhee <span class="font-normal text-[0.7em]">(Srilankan Musician)</span></h1>
-										<p class="font-bold">6 march 2024</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											Filmfare Award winning, Sri Lankan - Australian singer Dhee wore our pieces from our Mesh Garden Collection in her music video for  I Wear My Roots Like A Medal.
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+    <div class="unmuted toggle-sound white-bg" id="toggle-sound">
+      <div class="tooltip--left sound" data-tooltip="Turn On/Off Sound">
+        <div class="sound--icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M344,416a23.92,23.92,0,0,1-14.21-4.69c-.23-.16-.44-.33-.66-.51l-91.46-74.9H168a24,24,0,0,1-24-24V200.07a24,24,0,0,1,24-24h69.65l91.46-74.9c.22-.18.43-.35.66-.51A24,24,0,0,1,368,120V392a24,24,0,0,1-24,24Z" fill="#fff" /></svg>
+        </div>
+        <div class="sound--wave sound--wave_one"></div>
+        <div class="sound--wave sound--wave_two"></div>
+        <div class="sound--wave sound--wave_three"></div>
+      </div>
+    </div>
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide w-full relative">
-						<div class="flex">
-							<div class="w-[40%]">
-								<header class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-											Our Collabs
-										</p>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex relative">
-										<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Joining forces</h1>
-									</div>
-									<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(255,255,255,.2)] flex items-center justify-between">
-										<h1 class="translate-y-[2px] md:translate-y-[10px]">for greatness</h1>
-									</div>
-								</header>
-								<div>
-									<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/banner-06.webp"; ?>" class="inline-block w-full" alt="" />
-								</div>
-							</div>
-							<div class="w-[60%]">
-								<section class="w-full mt-12 mb-3">
-									<div class="w-full h-[32px] md:h-[48px]">
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-y border-y-[rgba(255,255,255,.2)] border-l border-l-[rgba(255,255,255,.2)] flex items-center justify-between px-8">
-										<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/collabs/top-6.webp"; ?>" class="inline-block h-[28px] lg:h-[48px]" alt="" />
-									</div>
-									<div class="w-full h-[64px] md:h-[96px] border-b border-b-[rgba(255,255,255,.2)] flex items-end justify-between px-8">
-										<h1 class="font-bold">OShoJain <span class="font-normal text-[0.7em]">(Music Concert)</span></h1>
-										<p class="font-bold">3 March 2024</p>
-									</div>
-									<div class="px-8 mt-6 pb-20 border-b border-b-[rgba(255,255,255,.2)]">
-										<p class="lg:max-w-[70%]">
-											The collaboration with the immensely talented singer-songwriter Osho Jain came to life at his recent concert in Bengaluru, where Rata brought a touch of elegance and flair to the evening with our crafted brooches, harmonising with soulful music. 
-										</p>
-									</div>
-									<div class="px-8 mt-4">
-										<div class="flex gap-3">
-											<div class="w-[32px] pt-[2px]">
-												<svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<g clip-path="url(#clip0_1517_6574)">
-														<path d="M10.0928 0.0175781C4.57877 0.0175781 0.0927734 4.50358 0.0927734 10.0176C0.0937734 15.5326 4.57977 20.0186 10.0928 20.0186C15.6068 20.0186 20.0928 15.5326 20.0938 10.0176C20.0938 4.50358 15.6078 0.0175781 10.0928 0.0175781ZM10.0928 18.0186C5.68277 18.0186 2.09377 14.4296 2.09277 10.0176C2.09277 5.60658 5.68177 2.01758 10.0928 2.01758C14.5048 2.01758 18.0938 5.60658 18.0938 10.0176C18.0928 14.4296 14.5038 18.0186 10.0928 18.0186Z" fill="#F20079"/>
-														<path d="M20 0.0175781C14.486 0.0175781 10 4.50358 10 10.0176C10.001 15.5326 14.487 20.0186 20 20.0186C25.514 20.0186 30 15.5326 30.001 10.0176C30.001 4.50358 25.515 0.0175781 20 0.0175781ZM20 18.0186C15.59 18.0186 12.001 14.4296 12 10.0176C12 5.60658 15.589 2.01758 20 2.01758C24.412 2.01758 28.001 5.60658 28.001 10.0176C28 14.4296 24.411 18.0186 20 18.0186Z" fill="#F20079"/>
-														<path d="M11.5 7L15 2.5L19 6.5V14L15 17L12 15L11.5 7Z" fill="#F20079"/>
-													</g>
-													<defs>
-														<clipPath id="clip0_1517_6574">
-															<rect width="30.001" height="21" fill="white"/>
-														</clipPath>
-													</defs>
-												</svg>
-											</div>
-											<p class="leading-[20px] font-bold">Curious about collaborating<br />with our brand? <a href="#" class="text-vivid-pink">Connect with us <span class="arrow"><span class="line"></span></span></a></p>
-										</div>
+    <div class="proxy"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script> -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/MotionPathPlugin.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+  </body>
+</html>
 
-									</div>
-								</section>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="absolute right-0 bottom-[3vw] flex items-center gap-8 z-10">
-				<div class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px] bg-[#F6F2E9] rounded-full flex items-center justify-center collabs-slider-prev cursor-pointer">
-					<svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="rotate-180">
-						<path d="M18.6667 3.26378e-06C18.6667 0.848003 19.5218 2.11429 20.3875 3.17715C21.5005 4.54858 22.8305 5.74515 24.3553 6.65829C25.4987 7.34286 26.8847 8 28 8M28 8C26.8847 8 25.4975 8.65715 24.3553 9.34172C22.8305 10.256 21.5005 11.4526 20.3875 12.8217C19.5218 13.8857 18.6667 15.1543 18.6667 16M28 8L-1.39876e-06 8" stroke="#242424" stroke-width="3"/>
-					</svg>
-				</div>
-				<div class="w-[42px] h-[42px] lg:w-[64px] lg:h-[64px] bg-[#F6F2E9] rounded-full flex items-center justify-center collabs-slider-next cursor-pointer">
-					<svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M18.6667 3.26378e-06C18.6667 0.848003 19.5218 2.11429 20.3875 3.17715C21.5005 4.54858 22.8305 5.74515 24.3553 6.65829C25.4987 7.34286 26.8847 8 28 8M28 8C26.8847 8 25.4975 8.65715 24.3553 9.34172C22.8305 10.256 21.5005 11.4526 20.3875 12.8217C19.5218 13.8857 18.6667 15.1543 18.6667 16M28 8L-1.39876e-06 8" stroke="#242424" stroke-width="3"/>
-					</svg>
-				</div>
-			</div>
-		</div>
-	</article>
-
-
-	<!-- =================================================== CUSTOM MADE SECTION =================================================== -->
-	<!-- <article class="bg-white">
-		<div class="container mx-auto px-4 md:px-0">
-			<header class="w-full mt-12 mb-8">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-						Custom Made
-					</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Weaving  Stories</h1>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px]">through Beads</h1>
-				</div>
-			</header>
-		</div>
-	</article> -->
-
-
-	<!-- =================================================== EVERYTHING AT RATA SECTION =================================================== -->
-	<!-- <article class="bg-white">
-		<div class="container mx-auto px-4 md:px-0">
-			<header class="w-full mt-12 mb-8">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-						Everything at Rata
-					</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw]">Explore all</h1>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] font-bold">Collections</h1>
-				</div>
-			</header>
-		</div>
-	</article> -->
-
-
-	<!-- =================================================== OUR PARTNER STORIES SECTION =================================================== -->
-	<article class="bg-cream-white">
-		<div class="container mx-auto px-4 md:px-0 py-6 flex items-center">
-			<section class="w-2/5">
-				<header class="w-full mt-12 mb-8">
-					<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-						<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-							Our Partner Stores
-						</p>
-					</div>
-					<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-						<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw]">We are also</h1>
-					</div>
-					<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-						<h1 class="translate-y-[2px] md:translate-y-[10px] font-bold">Located at -</h1>
-					</div>
-				</header>
-			</section>
-			<section class="w-3/5 flex items-center justify-center gap-6">
-				<div class="partner-thumbnail text-xs min-w-[200px] relative group">
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/partner/01.webp" ?>" alt="" class="inline-block w-full" />
-				</div>
-				<div class="partner-thumbnail text-xs min-w-[200px] relative group">
-					<div class="hover-content min-w-[160px] absolute left-[50%] -top-3 translate-x-[-50%] px-5 py-2 transition-all duration-200 ease-in-out text-white text-center bg-vivid-pink scale-0 group-hover:scale-100">Order Online</div>
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/partner/02.webp" ?>" alt="" class="inline-block w-full" />
-				</div>
-				<div class="partner-thumbnail text-xs min-w-[200px] relative group">
-					<div class="hover-content min-w-[160px] absolute left-[50%] -top-3 translate-x-[-50%] px-5 py-2 transition-all duration-200 ease-in-out text-white text-center bg-vivid-pink scale-0 group-hover:scale-100">Shop In-Store</div>
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/partner/03.webp" ?>" alt="" class="inline-block w-full" />
-				</div>
-				<div class="partner-thumbnail text-xs min-w-[200px] relative group">
-					<div class="hover-content min-w-[160px] absolute left-[50%] -bottom-3 translate-x-[-50%] px-5 py-2 transition-all duration-200 ease-in-out text-center bg-golden-yellow scale-0 group-hover:scale-100">Now in NYC</div>
-					<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/partner/04.webp" ?>" alt="" class="inline-block w-full" />
-				</div>
-			</section>
-		</div>
-	</article>
-
-
-	<!-- =================================================== EMMERSIVE SECTION =================================================== -->
-	<article class="bg-white">
-		<div class="container mx-auto px-4 md:px-0 flex items-center justify-center">
-			<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/home/emmersive-section.webp"; ?>" class="inline-block w-full" />
-		</div>
-	</article>
-
-
-	<!-- =================================================== OUR STORIES SECTION =================================================== -->
-	<article class="bg-white">
-		<div class="container mx-auto px-4 md:px-0">
-			<header class="w-full mt-12 mb-8">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2">
-						Our Stories
-					</p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Dive in Rata's</h1>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] font-bold">Journal & News</h1>
-					<p class="flex items-center gap-8">
-						<span>Whimsical</span>
-						<span>One of a Kind</span>
-						<span>Inclusive</span>
-					</p>
-				</div>
-			</header>
-			<div class="swiper" id="our-stories-slider">
-				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					<!-- Slides -->
-					<div class="swiper-slide">
-						<div class="block w-full h-full bg-cream-white group border-2 border-cream-white">
-							<div class="relative w-full overflow-hidden bg-white flex items-center justify-center transition-shadow duration-200">
-								<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/features/rata-feature-thumbnail.webp" ?>" alt="" />
-							</div>
-							<div class="p-4">
-								<!-- Product Title -->
-								<p class="text-[16px] lg:text-[20px] font-bold text-charcoal-black">
-									<span class="text-vivid-pink inline-block mr-2">//</span>
-									Rata Feature
-								</p>
-								<p class="text-[16px] lg:text-[20px] text-charcoal-black mb-2">Brown Paper Bag: 2024 Gift Directory</p>
-								<p class="text-xs lg:text-base text-charcoal-black leading-[10px]">Insight into our Sanctuary of Shine Collection, paying an ode to nature and its beauty.</p>
-								<p>
-									<a href="#" class="inline-block text-vivid-pink mt-3">Read More <span class="arrow"><span class="line"></span></span></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="block w-full h-full bg-cream-white group border-2 border-cream-white">
-							<div class="relative w-full overflow-hidden bg-white flex items-center justify-center transition-shadow duration-200">
-								<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/features/rata-journal-thumbanil.webp" ?>" alt="" />
-							</div>
-							<div class="p-4">
-								<!-- Product Title -->
-								<p class="text-[16px] lg:text-[20px] font-bold text-charcoal-black">
-									<span class="text-vivid-pink inline-block mr-2">//</span>
-									Rata Journal
-								</p>
-								<p class="text-[16px] lg:text-[20px] text-charcoal-black mb-2">An Interview with Blue the Border</p>
-								<p class="text-xs lg:text-base text-charcoal-black leading-[10px]">Founder Pratiksha Tandon speaks to Blur the Border on how love and care forged a brand that that makes people feel special. </p>
-								<!-- read-more link -->
-								<p>
-									<a href="#" class="inline-block text-vivid-pink mt-3">Read More <span class="arrow"><span class="line"></span></span></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="block w-full h-full bg-cream-white group border-2 border-cream-white">
-							<div class="relative w-full overflow-hidden bg-white flex items-center justify-center transition-shadow duration-200">
-								<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/features/rata-feature-2-thumbnail.webp" ?>" alt="" />
-							</div>
-							<div class="p-4">
-								<!-- Product Title -->
-								<p class="text-[16px] lg:text-[20px] font-bold text-charcoal-black">
-									<span class="text-vivid-pink inline-block mr-2">//</span>
-									Rata Feature
-								</p>
-								<p class="text-[16px] lg:text-[20px] text-charcoal-black mb-2">Spotlight: Sanctuary of Shine</p>
-								<p class="text-xs lg:text-base text-charcoal-black leading-[10px]">Indian Express Indulge gives us an insight into our Sanctuary of Shine Collection - paying an ode to nature and its beauty.</p>
-								<!-- read-more link -->
-								<p>
-									<a href="#" class="inline-block text-vivid-pink mt-3">Read More <span class="arrow"><span class="line"></span></span></a>
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="block w-full h-full bg-cream-white group border-2 border-cream-white">
-							<div class="relative w-full overflow-hidden bg-white flex items-center justify-center transition-shadow duration-200">
-								<img src="<?php echo get_template_directory_uri() . "/assets/img/cont/features/rata-feature-3-thumbnail.webp" ?>" alt="" />
-							</div>
-							<div class="p-4">
-								<!-- Product Title -->
-								<p class="text-[16px] lg:text-[20px] font-bold text-charcoal-black">
-									<span class="text-vivid-pink inline-block mr-2">//</span>
-									Rata Feature
-								</p>
-								<p class="text-[16px] lg:text-[20px] text-charcoal-black mb-2">Grazia's favourite heart-shaped baubles </p>
-								<p class="text-xs lg:text-base text-charcoal-black leading-[10px]">Our beaded heart ring was featured in Grazia - symbolising a boundless capacity for love and affection.</p>
-								<!-- read-more link -->
-								<p>
-									<a href="#" class="inline-block text-vivid-pink mt-3">Read More <span class="arrow"><span class="line"></span></span></a>
-								</p> 
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- If we need pagination -->
-				<!-- <div class="swiper-pagination"></div> -->
-		
-				<!-- If we need navigation buttons -->
-				<!-- <div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div> -->
-			</div>
-		</div>
-	</article>
-
-
-	<!-- =================================================== CONNECT WITH US SECTION =================================================== -->
-	<article class="bg-white mt-[5vw]">
-		<div class="container mx-auto px-4 md:px-0">
-			<header class="w-full mt-12">
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)]">
-					<p class="leading-[32px] md:leading-[48px] translate-y-[10px] md:translate-y-[18px] flex items-center gap-2"> Connect with Us </p>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex relative">
-					<h1 class="translate-y-[2px] md:translate-y-[10px] ml-[4vw] font-bold">Let's build</h1>
-				</div>
-				<div class="w-full h-[32px] md:h-[48px] border-b border-b-[rgba(0,0,0,.08)] flex items-center justify-between">
-					<h1 class="translate-y-[2px] md:translate-y-[10px]">something together</h1>
-				</div>
-			</header>
-			<div class="w-full flex justify-center mt-[-22px] relative">
-				<form class="w-[90%] max-w-[480px] mx-auto bg-[#FFF9EE] p-6 space-y-6 relative border-2 border-[#F9DE78]">
-					<span class="absolute right-[-24px] top-[-3px] z-10">
-						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M23.5 23.5L0 0V23.5H23.5Z" fill="#F9DE78"/>
-						</svg>
-
-					</span>
-					<!-- Name -->
-					<div>
-						<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Name</label>
-						<input type="text" name="name" placeholder="Add your name here" class="w-full px-4 pb-2 pt-1 border border-transparent bg-white focus:outline-none focus:border-yellow-400" />
-					</div>
-	
-					<!-- Contact -->
-					<div>
-						<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Mobile Number/Email ID</label>
-						<input type="text" name="contact" placeholder="Add your contact details" class="w-full px-4 pb-2 pt-1 border border-transparent bg-white focus:outline-none focus:border-yellow-400" />
-					</div>
-	
-					<!-- Reference -->
-					<div>
-						<label class="block font-semibold text-sm px-4 pt-2 pb-1 bg-white">Want to share any references?</label>
-						<div class="flex items-center gap-2 text-gray-500 px-4 pb-2 pt-1 bg-white border border-transparent">
-							<svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"> <path d="M12 4v16m8-8H4" /> </svg>
-							<span>Upload your Reference</span>
-						</div>
-					</div>
-	
-					<!-- Submit Button -->
-					<div class="w-full flex justify-center">
-						<button type="submit" class="bg-yellow-400 text-black font-semibold px-6 py-3 shadow transition flex items-center justify-center gap-2" >
-							Share Details
-							<span class="arrow"><div class="line"></div></span>
-						</button>
-					</div>
-	
-					<!-- WhatsApp Box -->
-					<div class="bg-[#EFE3C7] text-sm p-4 rounded flex items-center justify-between">
-						<div>
-							<div class="font-semibold">Want to have a quick chat? Let's Connect!</div>
-							<div>Message us on WhatsApp.</div>
-						</div>
-						<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M30.6717 9.38838C29.2856 7.99319 27.6364 6.88691 25.8198 6.13363C24.0031 5.38035 22.055 4.99505 20.0883 5.00005C11.8417 5.00005 5.12833 11.7117 5.125 19.9617C5.125 22.5984 5.81333 25.1717 7.12167 27.4417L5 35.1934L12.9317 33.1117C15.1257 34.306 17.5837 34.9323 20.0817 34.9334H20.0883C28.3333 34.9334 35.0467 28.2217 35.05 19.9717C35.0557 18.0059 34.6716 16.0584 33.9201 14.2418C33.1686 12.4253 32.0645 10.7757 30.6717 9.38838ZM20.0883 32.4084H20.0833C17.8559 32.4086 15.6694 31.8093 13.7533 30.6734L13.3 30.4034L8.59333 31.6384L9.84833 27.05L9.55333 26.58C8.30798 24.5974 7.64872 22.303 7.65167 19.9617C7.655 13.105 13.2333 7.52671 20.0933 7.52671C21.7271 7.52308 23.3453 7.84352 24.8544 8.46947C26.3635 9.09542 27.7335 10.0145 28.885 11.1734C30.0427 12.3268 30.9603 13.6982 31.5848 15.2084C32.2093 16.7186 32.5283 18.3375 32.5233 19.9717C32.52 26.8284 26.9417 32.4084 20.0883 32.4084ZM26.91 23.0934C26.535 22.905 24.6983 22.0017 24.355 21.8767C24.0133 21.7517 23.765 21.69 23.515 22.0634C23.265 22.4367 22.5483 23.2784 22.33 23.5284C22.1117 23.7784 21.8933 23.8084 21.52 23.6217C21.1467 23.435 19.9417 23.04 18.5133 21.7667C17.4017 20.775 16.6517 19.5517 16.4333 19.1767C16.215 18.8017 16.41 18.6 16.5983 18.4134C16.7667 18.2467 16.9717 17.9767 17.1583 17.7584C17.345 17.54 17.4067 17.385 17.5317 17.135C17.6567 16.885 17.595 16.6667 17.5 16.48C17.4067 16.2917 16.6583 14.4517 16.3467 13.7034C16.045 12.9784 15.7367 13.075 15.5067 13.065C15.2685 13.0553 15.0301 13.0509 14.7917 13.0517C14.6021 13.0565 14.4156 13.1005 14.2438 13.1808C14.072 13.2611 13.9186 13.376 13.7933 13.5184C13.45 13.8934 12.485 14.7967 12.485 16.6367C12.485 18.4767 13.825 20.255 14.0117 20.505C14.1983 20.755 16.6483 24.53 20.3983 26.15C21.2917 26.535 21.9883 26.765 22.53 26.9384C23.425 27.2234 24.24 27.1817 24.885 27.0867C25.6033 26.9801 27.0967 26.1834 27.4083 25.31C27.72 24.4367 27.72 23.6884 27.6267 23.5317C27.5333 23.375 27.2817 23.28 26.91 23.0934Z" fill="black"/>
-						</svg>
-					</div>
-				</form>
-			</div>
-
-		</div>
-	</article>
-
-
-</main>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		const heroSwiper = new Swiper('#home-hero-slider', {
-			effect: 'fade', // fade effect for smooth transitions
-			speed: 1000, // transition speed in milliseconds
-			direction: 'horizontal',
-			loop: true,
-			autoplay: {
-				delay: 3000, // time in milliseconds between slides
-				disableOnInteraction: false, // keeps autoplay running after user interacts
-			},
-		});
-		const storiesSwiper = new Swiper('#our-stories-slider', {
-			direction: 'horizontal',
-			slidesPerView: "auto",
-			spaceBetween: 20,
-		});
-
-		const collabsSlider = new Swiper('#collabs-slider', {
-			direction: 'horizontal',
-			slidesPerView: "auto",
-			spaceBetween: 20,
-			navigation: {
-				nextEl: '.collabs-slider-next',
-				prevEl: '.collabs-slider-prev',
-			},
-			slidesPerView: 1,
-		});
-
-    	// const validation = new JustValidate('form');
-
-		// validation
-		// 	.addField('[name="name"]', [
-		// 		{
-		// 			rule: 'required',
-		// 			errorMessage: 'Name is required',
-		// 		}
-		// 	])
-		// 	.addField('[name="contact"]', [
-		// 		{
-		// 			rule: 'required',
-		// 			errorMessage: 'Contact is required',
-		// 		},
-		// 		{
-		// 			rule: 'email',
-		// 			errorMessage: 'Enter a valid email or phone',
-		// 		}
-		// 	]);
-
-
-			const videos = document.querySelectorAll(".auto-play-on-scroll");
-
-			const observer = new IntersectionObserver((entries) => {
-				entries.forEach(entry => {
-					const video = entry.target;
-					if (entry.isIntersecting) {
-						// Load video only once
-						if (!video.src) {
-							video.src = video.dataset.src;
-						}
-						video.play().catch(() => {});
-					} else {
-						video.pause();
-					}
-				});
-			}, {
-				threshold: 0.5
-			});
-
-			videos.forEach(video => observer.observe(video));
-
-
-			const video = document.getElementById('behind-the-scenes');
-			const timeline = document.getElementById('timeline');
-
-			video.addEventListener('loadedmetadata', () => {
-				timeline.max = video.duration;
-			});
-
-			video.addEventListener('timeupdate', () => {
-				timeline.value = video.currentTime;
-			});
-
-			timeline.addEventListener('input', () => {
-				video.currentTime = timeline.value;
-			});
-
-	});
-</script>
-
-<?php get_footer(); ?>

@@ -50,7 +50,18 @@ function rata_enqueue_scripts() {
 
 	wp_enqueue_script( 'just-validate', 'https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js', array(), null, true );
 
+	wp_enqueue_script('rata-gallery', get_template_directory_uri() . '/assets/js/micromodal.min.js');
+
 	wp_enqueue_script('rata-gallery', get_template_directory_uri() . '/assets/js/gallery.js', ['swiper-script'], null, true);
+
+	// ===================================================================================================== LIGHTBOX ENQUEUING
+	// GLightbox for zoom
+    wp_enqueue_style('glightbox-css', 'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css');
+    wp_enqueue_script('glightbox-js', 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js', [], null, true);
+
+	// ===================================================================================================== TEMPORARY ENQUEUING 
+	wp_enqueue_style('swiper-style', '/assets/index-rkK2SzGx.css');
+    wp_enqueue_script('swiper-script', '/assets/index-7lUWUbe5.js', array(), null, true);
 
 
 }
